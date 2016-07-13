@@ -40,13 +40,13 @@ var game_file_list = [
 	"bin-debug/core/view/login/ServerSelectItem.js",
 	"bin-debug/core/view/login/ServerSelectUI.js",
 	"bin-debug/core/view/logo/LogoAnimation.js",
+	"bin-debug/core/view/main/MainMapBg.js",
 	"bin-debug/core/view/main/MainUI.js",
 	"bin-debug/core/view/main/RoleInfoUI.js",
 	"bin-debug/core/view/pop/PopWindow.js",
 	"bin-debug/core/view/story/StoryUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",
-	"bin-debug/core/view/main/MainMapBg.js",
 	//----auto game_file_list end----
 ];
 
