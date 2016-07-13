@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="RoleInfoSkin" width="480" height="80" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect height="80" width="480"/>
+	<e:Rect height="64" width="64" x="0" verticalCenter="0" fillColor="0xF5AA6D"/>
+	<e:Rect verticalCenter="-18" width="394" height="26" x="72" y="10" fillColor="0x9CE4EF"/>
+	<e:Rect y="20" fillColor="0x9CE4EF" verticalCenter="16" width="141" height="26" x="71"/>
+	<e:Rect y="30" fillColor="0x9CE4EF" verticalCenter="14" width="141" height="26" x="222"/>
+	<e:Rect y="40" fillColor="0x9CE4EF" verticalCenter="13" width="26" height="26" x="402"/>
+	<e:Rect y="50" fillColor="0x9CE4EF" verticalCenter="15" width="26" height="26" x="437"/>
+</e:Skin>

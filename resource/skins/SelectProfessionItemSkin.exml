@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="SelectProfessionItemSkin" width="200" height="400" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Rect height="300" width="160" horizontalCenter="0" verticalCenter="0"/>
+</e:Skin>
