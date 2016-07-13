@@ -6,9 +6,11 @@
 class LoginMain extends BaseFirstUI {
 
     private btn: BaseButton;
+    private bg:eui.Image;
     private server_name: eui.Label;
     private server_select: eui.Label;
     private server_select_ui: ServerSelectUI;
+    private select_profession_ui:SelectProfession;
 
     private server_select_num: number;
 
@@ -41,9 +43,10 @@ class LoginMain extends BaseFirstUI {
     }
 
     private click(e: egret.Event): void {
-        var event: MyUIEvent = new MyUIEvent(MyUIEvent.LOGIN_SUCCESS);
-        event.data = this.server_select_num;
-        UIManager.getInstance().dispatchEvent(event);
+        this.bg.visible = this.server_name.visible = this.btn.visible
+        this.server_select.visible = this.server_select_ui.visible = false;
+        this.select_profession_ui = new SelectProfession(this.server_select_num);
+        this.addChild(this.select_profession_ui);
     }
 
     private popServerSelect(e: egret.TouchEvent): void {
@@ -72,6 +75,11 @@ class LoginMain extends BaseFirstUI {
         if(this.server_select_ui.parent != null) {
             this.server_select_ui.parent.removeChild(this.server_select_ui);
         }
+        this.server_select_ui = null;
         this.btn = null;
+        if(this.select_profession_ui.parent != null){
+            this.select_profession_ui.parent.removeChild(this.select_profession_ui);
+        }
+        this.select_profession_ui = null;
     }
 }

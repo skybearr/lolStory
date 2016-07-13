@@ -6,14 +6,20 @@
 class MainUI extends eui.Group {
 	public constructor() {
     	super();
-        this.once(egret.Event.ADDED_TO_STAGE,this.onStage,this);
+    	this.once(egret.Event.ADDED_TO_STAGE,this.onStage,this);
 	}
 	
-	private onStage(){
+	private onStage(e:egret.Event):void
+	{
+	    this.init();
+	    this.initEvent();
+	}
+	
+	private init():void
+	{
 	    this.initRoleInfo();
 	    this.initMap();
 	    this.initButtons();
-	    this.initEvent();
 	}
 	
 	private initRoleInfo(){
@@ -28,7 +34,8 @@ class MainUI extends eui.Group {
 	    
 	}
 	
-	private initEvent(){
+	private initEvent():void
+	{
 	    
 	}
 	

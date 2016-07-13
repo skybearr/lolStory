@@ -2,5 +2,5 @@
 <e:Skin class="LoadingSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
 	<e:Image source="game_logo_png" horizontalCenter="0" verticalCenter="-191"/>
 	<e:Image source="loading_word_png" verticalCenter="31" horizontalCenter="0"/>
-	<e:Label id="tieshi_txt" width="282" size="20" fontFamily="宋体" horizontalCenter="1" verticalCenter="-91" text="小贴士：欢迎来到这里" textColor="0x5DF312"/>
+	<e:Label id="tieshi_txt" width="282" size="20" fontFamily="宋体" horizontalCenter="1" text="小贴士：欢迎来到召唤师峡谷" textColor="0x5DF312" y="379"/>
 </e:Skin>

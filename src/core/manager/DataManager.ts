@@ -36,5 +36,31 @@ class DataManager extends egret.EventDispatcher {
     {
         this.string_data_arr = e;
     }
-
+    
+    /**检测用户名*/
+    public checkUserName(str:string):boolean
+    {
+        if(str == "" || str == null)
+        {
+            UIManager.getInstance().popMessage("用户名不能为空");
+            return false;
+        }
+        else if(str.length > 16)
+        {
+            UIManager.getInstance().popMessage("不能超过8个汉字或16个字符");
+            return false;
+        }
+        else if(this.checkSenseriousWords(str)) {
+            UIManager.getInstance().popMessage("包含敏感字");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    /**检测敏感字*/
+    public checkSenseriousWords(str:string):boolean
+    {
+        return false;
+    }
 }

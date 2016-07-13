@@ -9,11 +9,11 @@
 			"name":"loading"
 		},
 		{
-			"keys":"login_bg_jpg,server_select_bg_png,server_select_close_jpg,startgame_png,studio_logo_png",
+			"keys":"login_bg_jpg,server_select_bg_png,server_select_close_jpg,startgame_png,studio_logo_png,username_des_png",
 			"name":"login"
 		},
 		{
-			"keys":"Annie_5_jpg,Ashe_4_jpg,Caitlyn_2_jpg,String_json",
+			"keys":"Annie_5_jpg,Ashe_4_jpg,Caitlyn_2_jpg,String_json,2_png,3_png,4_png,1_png",
 			"name":"game"
 		}
 	],
@@ -92,6 +92,36 @@
 			"name":"preload_bg_jpg",
 			"type":"image",
 			"url":"assets/skybear/preload/preload_bg.jpg"
+		},
+		{
+			"name":"1_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/map/1.png"
+		},
+		{
+			"name":"2_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/map/2.png"
+		},
+		{
+			"name":"3_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/map/3.png"
+		},
+		{
+			"name":"4_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/map/4.png"
+		},
+		{
+			"name":"afda_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/afda.png"
+		},
+		{
+			"name":"username_des_png",
+			"type":"image",
+			"url":"assets/skybear/login/username_des.png"
 		}
 	]
 }
