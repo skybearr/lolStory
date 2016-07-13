@@ -9,11 +9,11 @@
 			"name":"loading"
 		},
 		{
-			"keys":"login_bg_jpg,server_select_bg_png,server_select_close_jpg,startgame_png,studio_logo_png,username_des_png",
+			"keys":"login_bg_jpg,server_select_bg_png,server_select_close_jpg,startgame_png,studio_logo_png,username_des_png,b7_png,b8_png",
 			"name":"login"
 		},
 		{
-			"keys":"Annie_5_jpg,Ashe_4_jpg,Caitlyn_2_jpg,String_json,2_png,3_png,4_png,1_png",
+			"keys":"Annie_5_jpg,Ashe_4_jpg,Caitlyn_2_jpg,String_json,2_png,3_png,4_png,1_png,b1_png,b2_png,b3_png,b4_png,b5_png,b6_png",
 			"name":"game"
 		}
 	],
@@ -122,6 +122,46 @@
 			"name":"username_des_png",
 			"type":"image",
 			"url":"assets/skybear/login/username_des.png"
+		},
+		{
+			"name":"b1_png",
+			"type":"image",
+			"url":"assets/skybear/public/b1.png"
+		},
+		{
+			"name":"b2_png",
+			"type":"image",
+			"url":"assets/skybear/public/b2.png"
+		},
+		{
+			"name":"b3_png",
+			"type":"image",
+			"url":"assets/skybear/public/b3.png"
+		},
+		{
+			"name":"b4_png",
+			"type":"image",
+			"url":"assets/skybear/public/b4.png"
+		},
+		{
+			"name":"b5_png",
+			"type":"image",
+			"url":"assets/skybear/public/b5.png"
+		},
+		{
+			"name":"b6_png",
+			"type":"image",
+			"url":"assets/skybear/public/b6.png"
+		},
+		{
+			"name":"b7_png",
+			"type":"image",
+			"url":"assets/skybear/public/b7.png"
+		},
+		{
+			"name":"b8_png",
+			"type":"image",
+			"url":"assets/skybear/public/b8.png"
 		}
 	]
 }

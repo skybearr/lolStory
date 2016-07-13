@@ -41,6 +41,7 @@ var game_file_list = [
 	"bin-debug/core/view/login/ServerSelectItem.js",
 	"bin-debug/core/view/login/ServerSelectUI.js",
 	"bin-debug/core/view/logo/LogoAnimation.js",
+	"bin-debug/core/view/main/MainButtons.js",
 	"bin-debug/core/view/main/MainMapBg.js",
 	"bin-debug/core/view/main/MainUI.js",
 	"bin-debug/core/view/main/RoleInfoUI.js",

@@ -6,6 +6,6 @@
 	<e:Rect width="531" y="648" fillColor="0x7C6B6B" height="1" horizontalCenter="0"/>
 	<e:Label text="请给您的召唤师命名" y="300" width="482" height="23" size="20" fontFamily="宋体" horizontalCenter="0"/>
 	<e:Label id="username_txt" y="555" height="32" fontFamily="宋体" width="293" size="20" verticalAlign="middle" textAlign="center" textColor="0x121010" background="true" bold="true" horizontalCenter="-0.5" type="input" maxChars="16"/>
-	<e:Button id="sure_btn" label="接受" y="602" width="88" height="29" horizontalCenter="0"/>
 	<e:Image source="username_des_png" y="347" horizontalCenter="0"/>
+	<e:Label id="sure_btn" text="接受" y="606" width="88" verticalAlign="middle" textAlign="center" size="20" height="26" background="true" backgroundColor="0x112233" horizontalCenter="0"/>
 </e:Skin>
