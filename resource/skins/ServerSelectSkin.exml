@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="ServerSelectSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect height="960" width="640" horizontalCenter="0" verticalCenter="0" fillColor="0x2E4645" locked="true"/>
+	<e:Image id="bg" source="server_select_bg_png" scale9Grid="19,9,119,57" width="421" height="526" horizontalCenter="0.5" y="225" locked="true"/>
+	<e:Label text="选择服务器" width="194" size="26" textAlign="center" textColor="0xDDE412" bold="true" verticalCenter="-223" horizontalCenter="0"/>
+	<e:Image id="close_btn" source="server_select_close_jpg" x="503" y="216"/>
+	<e:Scroller id="scroller" width="280" height="280" y="308" horizontalCenter="0" verticalScrollBar="true" bounces="false">
+		<e:Group id="itemCon" width="260"/>
+	</e:Scroller>
+</e:Skin>

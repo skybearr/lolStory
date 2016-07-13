@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="LoadingProgressBar" width="340" height="46" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="loading_progressBg_png" width="300" height="42" scale9Grid="21,5,33,33" verticalCenter="0" right="0" locked="true"/>
+	<e:Image source="loading_progress_png" scale9Grid="18,4,21,31" width="338" height="38" id="progress_bar" verticalCenter="0" x="0" locked="true"/>
+	<e:Image source="loading_cover_png" horizontalCenter="18.5" verticalCenter="0" locked="true"/>
+	<e:Image source="loading_progress_png" width="296" height="38" scale9Grid="18,4,21,31" id="progress_bar_mask" verticalCenter="0" right="2" locked="true"/>
+	<e:Label fontFamily="宋体" width="282" size="22" id="progress_txt" horizontalCenter="19" verticalAlign="middle" textAlign="center" verticalCenter="-1" textColor="0xEEF4EB" text="99/999" bold="true"/>
+</e:Skin>

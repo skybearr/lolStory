@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="ServerSelectItemSkin" width="280" height="30" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="bg" scale9Grid="19,3,121,23" width="280" height="30" horizontalCenter="0" verticalCenter="0" source="server_select_bg_png"/>
+	<e:Label id="server_num" x="11" size="22" fontFamily="Comic Sans MS" width="50" verticalCenter="0" textColor="0x160BEA" bold="true" text="12区" height="22"/>
+	<e:Label id="server_isnew" fontFamily="Comic Sans MS" width="57" size="22" x="217" verticalCenter="0" textColor="0x2713DD" bold="true" text="新服" verticalAlign="middle"/>
+	<e:Label id="server_name" fontFamily="Comic Sans MS" width="151" size="22" x="65" textAlign="center" verticalCenter="0" textColor="0x800232" bold="true" text="asfsafdasf"/>
+</e:Skin>

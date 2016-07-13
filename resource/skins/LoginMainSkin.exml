@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="LoginMainSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Image source="login_bg_jpg" fillMode="scale" smoothing="true" width="640" height="960" horizontalCenter="0" verticalCenter="0" locked="true"/>
+	<e:Label text="1区 美少女战士区" fontFamily="Times New Roman" size="30" x="126" y="662" verticalAlign="middle" textAlign="left" width="216" height="30" id="server_name" backgroundColor="0xff00ff" background="true" bold="true" textColor="0xEDDB19" locked="true"/>
+	<e:Label text="点击选区" fontFamily="Times New Roman" bold="true" size="30" x="369" y="662" verticalAlign="middle" textAlign="center" width="126" height="30" id="server_select" background="true" backgroundColor="0xff00ff" textColor="0x640EC7" locked="true"/>
+	<ns1:ServerSelectUI id="server_select_ui" skinName="ServerSelectSkin" horizontalCenter="0" verticalCenter="0" visible="false"/>
+</e:Skin>
