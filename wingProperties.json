@@ -1,5 +1,5 @@
 {
-	"close":false,
+	"close":true,
 	"natures":["egretProject"],
 	"resourcePlugin":{
 		"configs":[{
@@ -106,11 +106,6 @@
 				},
 				{
 					"isFolder":false,
-					"key":"username_des_png",
-					"name":"username_des_png"
-				},
-				{
-					"isFolder":false,
 					"key":"b1_png",
 					"name":"b1_png"
 				},
@@ -148,6 +143,11 @@
 					"isFolder":false,
 					"key":"b8_png",
 					"name":"b8_png"
+				},
+				{
+					"isFolder":false,
+					"key":"username_des_png",
+					"name":"username_des_png"
 				}
 			]
 		}
