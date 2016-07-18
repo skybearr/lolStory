@@ -1,10 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
-<e:Skin class="RoleInfoSkin" width="480" height="80" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Rect height="80" width="480"/>
-	<e:Rect height="64" width="64" x="5" verticalCenter="0" fillColor="0xF5AA6D"/>
-	<e:Rect verticalCenter="-16" width="394" height="32" x="69" y="10" fillColor="0x9CE4EF"/>
-	<e:Rect y="20" verticalCenter="16" width="169" height="32" x="69" fillColor="0x0CD3EE"/>
-	<e:Rect y="30" verticalCenter="16" width="161" height="32" x="238" fillColor="0xDE9CEF"/>
-	<e:Rect y="40" verticalCenter="16" width="32" height="32" x="399" fillColor="0xAC0DF1"/>
-	<e:Rect y="50" verticalCenter="16" width="32" height="32" x="431" fillColor="0xA09CEF"/>
+<e:Skin class="RoleInfoSkin" width="458" height="64" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect height="64" width="64" verticalCenter="0" fillColor="0xF5AA6D" locked="true"/>
+	<e:Rect verticalCenter="-16" width="192" height="32" x="64" y="10" fillColor="0x9CE4EF" locked="true"/>
+	<e:Rect width="202" height="32" x="256" fillColor="0xE76FEC" y="0" locked="true"/>
+	<e:Rect y="20" verticalCenter="16" width="169" height="32" x="64" fillColor="0x0CD3EE" locked="true"/>
+	<e:Rect y="30" verticalCenter="16" width="161" height="32" x="233" fillColor="0xDE9CEF" locked="true"/>
+	<e:Rect y="40" verticalCenter="16" width="32" height="32" x="394" fillColor="0xAC0DF1" locked="true"/>
+	<e:Rect y="50" verticalCenter="16" width="32" height="32" x="426" fillColor="0xA09CEF" locked="true"/>
+	<e:Label id="user_name_txt" text="skybear" x="64" y="7" width="192" textColor="0xF63A10" verticalAlign="middle" textAlign="center" size="18" fontFamily="Courier New Baltic" bold="true"/>
+	<e:Label id="shop_txt" x="64" verticalAlign="middle" y="32" text="商城" fontFamily="Courier New Baltic" textAlign="center" bold="true" width="168" size="18" background="false" height="32" textColor="0x072DED"/>
+	<e:Label id="info_txt" textColor="0x072DED" text="个人信息" fontFamily="Courier New Baltic" bold="true" size="18" background="false" x="232" verticalAlign="middle" y="32" textAlign="center" width="160" height="32"/>
+	<e:Label id="help_txt" textColor="0x072DED" text="?" fontFamily="Courier New Baltic" bold="true" size="18" background="false" x="394" verticalAlign="middle" y="32" width="32" height="32" textAlign="center"/>
+	<e:Label id="set_txt" textColor="0x072DED" text="设" fontFamily="Courier New Baltic" bold="true" size="18" background="false" x="426" verticalAlign="middle" y="32" textAlign="center" width="32" height="32"/>
+	<e:Label x="256" verticalAlign="middle" y="7" textColor="0xF63A10" text="券" fontFamily="Courier New Baltic" textAlign="center" bold="true" width="19" size="18" id="user_name_txt0"/>
+	<e:Label id="rmb_txt" verticalAlign="middle" y="7" text="9999" fontFamily="Courier New Baltic" textAlign="left" bold="true" width="68" size="18" x="277" textColor="0x1E11DD"/>
+	<e:Label id="user_name_txt2" verticalAlign="middle" y="7" textColor="0xF63A10" text="金" fontFamily="Courier New Baltic" textAlign="center" bold="true" width="19" size="18" x="353"/>
+	<e:Label id="coin_txt" x="376" verticalAlign="middle" y="7" textColor="0x1E11DD" text="9999" fontFamily="Courier New Baltic" textAlign="left" bold="true" width="69" size="18"/>
 </e:Skin>

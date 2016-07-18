@@ -13,7 +13,7 @@
 			"name":"login"
 		},
 		{
-			"keys":"Annie_5_jpg,Ashe_4_jpg,Caitlyn_2_jpg,String_json,2_png,3_png,4_png,1_png,b1_png,b2_png,b3_png,b4_png,b5_png,b6_png",
+			"keys":"Annie_5_jpg,Ashe_4_jpg,Caitlyn_2_jpg,String_json,b1_png,b2_png,b3_png,b4_png,b5_png,b6_png,btnbg_png,main_03_png,map_1_png,map_2_png,map_3_png,map_4_png",
 			"name":"game"
 		}
 	],
@@ -94,26 +94,6 @@
 			"url":"assets/skybear/preload/preload_bg.jpg"
 		},
 		{
-			"name":"1_png",
-			"type":"image",
-			"url":"assets/skybear/game_ui/map/1.png"
-		},
-		{
-			"name":"2_png",
-			"type":"image",
-			"url":"assets/skybear/game_ui/map/2.png"
-		},
-		{
-			"name":"3_png",
-			"type":"image",
-			"url":"assets/skybear/game_ui/map/3.png"
-		},
-		{
-			"name":"4_png",
-			"type":"image",
-			"url":"assets/skybear/game_ui/map/4.png"
-		},
-		{
 			"name":"afda_png",
 			"type":"image",
 			"url":"assets/skybear/game_ui/afda.png"
@@ -162,6 +142,36 @@
 			"name":"b8_png",
 			"type":"image",
 			"url":"assets/skybear/public/b8.png"
+		},
+		{
+			"name":"btnbg_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/story/btnbg.png"
+		},
+		{
+			"name":"main_03_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/story/main_03.png"
+		},
+		{
+			"name":"map_1_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/map/map_1.png"
+		},
+		{
+			"name":"map_2_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/map/map_2.png"
+		},
+		{
+			"name":"map_3_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/map/map_3.png"
+		},
+		{
+			"name":"map_4_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/map/map_4.png"
 		}
 	]
 }

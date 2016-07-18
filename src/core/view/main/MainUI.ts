@@ -3,7 +3,7 @@
  * @author 
  *
  */
-class MainUI extends eui.Group {
+class MainUI extends BaseFirstUI {
     private role:RoleInfoUI;
     private map:MainMapBg;
     private buttons:MainButtons;
