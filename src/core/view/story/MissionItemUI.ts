@@ -22,7 +22,7 @@ class MissionItemUI extends eui.Group {
     public constructor(id: number,star: number,state: number) {
         super();
         this.mission_id = id;
-        var texture: egret.Texture = RES.getRes("mission_bg"+id);
+        var texture: egret.Texture = RES.getRes("mission_bg"+id+"_png");
         this.bg = new eui.Image(texture);
         this.addChild(this.bg);
 

@@ -39,11 +39,6 @@ class MainMapBg extends eui.Group {
         }
     }
 
-    private clickMoreGame(e: TouchEvent): void {
-        SoundManager.getInstance().playEffectSound();
-        UIManager.getInstance().popMessage(StringConst.String_00002,UIConst.POP_MESSAGE_TYPE_WINDOW);
-    }
-
     private clear(): void {
         this.removeChildren();
         this.mission_btn_arr = null;

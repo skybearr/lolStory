@@ -48,6 +48,8 @@ var game_file_list = [
 	"bin-debug/core/view/main/MissionBtn.js",
 	"bin-debug/core/view/main/RoleInfoUI.js",
 	"bin-debug/core/view/pop/PopWindow.js",
+	"bin-debug/core/view/story/MissionItemUI.js",
+	"bin-debug/core/view/story/MissionListUI.js",
 	"bin-debug/core/view/story/StoryLogic.js",
 	"bin-debug/core/view/story/StoryUI.js",
 	"bin-debug/Main.js",

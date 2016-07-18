@@ -3,7 +3,7 @@
  * @author 
  *
  */
-class MissionListUI extends eui.Component {
+class MissionListUI extends BaseSecondUI{
     private back_btn: eui.Label;
     private title_txt: eui.Label;
     private mission_list_con: eui.Group;
@@ -23,12 +23,12 @@ class MissionListUI extends eui.Component {
     public constructor(chapterID: number) {
         super();
         this.charter_id = chapterID;
-        this.skinName = "resource/assets/skins/MissionListSkin.exml";
+        this.skinName = "MissionListSkin";
         this.once(egret.Event.ADDED_TO_STAGE,this.onStage,this);
     }
 
     private onStage(e: egret.Event): void {
-//        this.newest_mission_id = StoryLogic.getInstance().current_missionID;
+        this.newest_mission_id = StoryLogic.getInstance().current_missionID;
 
 
         this.mission_list_con = new eui.Group();
@@ -37,17 +37,17 @@ class MissionListUI extends eui.Component {
         this.addChild(this.mission_list_con);
         this.mission_arr = [];
         
-        var mission_num:number = 5;
+        var mission_num:number = 4;
         for(var i: number = 0;i < mission_num;i++) {
             var star: number = i % 4;
             var state: number = this.getState(i);
-            var item: MissionItemUI = new MissionItemUI(i,star,state);
+            var item: MissionItemUI = new MissionItemUI(i+1,star,state);
             item.name = i.toString();
             item.x = (item.width_set + 60) * (i % 3);
             item.y = (item.height_set + 10) * Math.floor(i / 3);
-//            if(state == StoryLogic.MISSION_ITEM_STATE_WANTED) {
-//                this.current_mission_item = item;
-//            }
+            if(state == StoryLogic.MISSION_ITEM_STATE_WANTED) {
+                this.current_mission_item = item;
+            }
             this.mission_list_con.addChild(item);
             this.mission_arr.push(item);
             item.addEventListener(egret.TouchEvent.TOUCH_TAP,this.clickItem,this);

@@ -42,8 +42,6 @@ class MissionBtn extends eui.Group {
 
         if(this.state == StoryLogic.MISSION_STATE_LOCK) {
             this.tween_circle.visible = false;
-//            this.bg_circle.scaleX = this.bg_circle.scaleY = (this.btn_width - 40) / this.bg_circle.width;
-//            this.lock_bmp.scaleX = this.lock_bmp.scaleY = (this.btn_width - 70) / this.lock_bmp.width;
         }
         else if(this.state == StoryLogic.MISSION_STATE_WANTED) {
             this.lock_bmp.visible = false;
@@ -69,9 +67,7 @@ class MissionBtn extends eui.Group {
 
     private clickMission(e: egret.TouchEvent): void {
         if(this.state != StoryLogic.MISSION_STATE_LOCK) {
-            var event: MyUIEvent = new MyUIEvent(MyUIEvent.OPEN_MISSION_LIST);
-            event.data = this.mission_id;
-            StoryLogic.getInstance().dispatchEvent(event);
+            UIManager.getInstance().openSecondUI(new MissionListUI(this.mission_id));
         }
     }
 
