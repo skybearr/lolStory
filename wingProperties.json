@@ -148,6 +148,21 @@
 					"isFolder":false,
 					"key":"username_des_png",
 					"name":"username_des_png"
+				},
+				{
+					"isFolder":false,
+					"key":"btnbg_png",
+					"name":"btnbg_png"
+				},
+				{
+					"isFolder":false,
+					"key":"finger_png",
+					"name":"finger_png"
+				},
+				{
+					"isFolder":false,
+					"key":"main_03_png",
+					"name":"main_03_png"
 				}
 			]
 		}

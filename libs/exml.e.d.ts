@@ -6,6 +6,8 @@ declare class LoginMainSkin extends eui.Skin{
 }
 declare class LogoAnimationSkin extends eui.Skin{
 }
+declare class MissionListSkin extends eui.Skin{
+}
 declare class RoleInfoSkin extends eui.Skin{
 }
 declare class SelectProfessionItemSkin extends eui.Skin{

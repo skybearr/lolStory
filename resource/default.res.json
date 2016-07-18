@@ -13,7 +13,7 @@
 			"name":"login"
 		},
 		{
-			"keys":"Annie_5_jpg,Ashe_4_jpg,Caitlyn_2_jpg,String_json,2_png,3_png,4_png,1_png,b1_png,b2_png,b3_png,b4_png,b5_png,b6_png",
+			"keys":"Annie_5_jpg,Ashe_4_jpg,Caitlyn_2_jpg,String_json,2_png,3_png,4_png,1_png,b1_png,b2_png,b3_png,b4_png,b5_png,b6_png,finger_png,story_mission_list_json",
 			"name":"game"
 		}
 	],
@@ -162,6 +162,26 @@
 			"name":"b8_png",
 			"type":"image",
 			"url":"assets/skybear/public/b8.png"
+		},
+		{
+			"name":"btnbg_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/story/btnbg.png"
+		},
+		{
+			"name":"finger_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/story/finger.png"
+		},
+		{
+			"name":"main_03_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/story/main_03.png"
+		},
+		{
+			"name":"story_mission_list_json",
+			"type":"json",
+			"url":"assets/skybear/json_data/story_mission_list.json"
 		}
 	]
 }

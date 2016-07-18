@@ -1,0 +1,27 @@
+[
+	{
+		"id": 1,
+		"monster_id":1,
+		"name":"小鸡",
+		"profession_type":1,
+		"star":3,
+		"drop":"200;20;1:25,2:25,3:25,4:25",
+		"hp":100,
+		"mana":100,
+		"ad":5,
+		"ap":0,
+		"ad_armor":10,
+		"ap_armor":10,
+		"ad_steal":10,
+		"ap_steal":10,
+		"attack_speed":1,
+		"crit":10,
+		"crit_rate":2,
+		"range":300,
+		"move_speed":300,
+		"cd":10,
+		"armor":10,
+		"resistance":10,
+		"sidestep":10
+	}
+]
