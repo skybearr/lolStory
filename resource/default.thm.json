@@ -9,6 +9,7 @@
     "resource/skins/LogoAnimationSkin.exml",
     "resource/skins/main/MissionListSkin.exml",
     "resource/skins/main/RoleInfoSkin.exml",
+    "resource/skins/MissionListSkin.exml",
     "resource/skins/SelectProfessionItemSkin.exml",
     "resource/skins/SelectProfessionSkin.exml",
     "resource/skins/ServerSelectItemSkin.exml"

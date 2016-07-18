@@ -86,26 +86,6 @@
 				},
 				{
 					"isFolder":false,
-					"key":"1_png",
-					"name":"1_png"
-				},
-				{
-					"isFolder":false,
-					"key":"2_png",
-					"name":"2_png"
-				},
-				{
-					"isFolder":false,
-					"key":"3_png",
-					"name":"3_png"
-				},
-				{
-					"isFolder":false,
-					"key":"4_png",
-					"name":"4_png"
-				},
-				{
-					"isFolder":false,
 					"key":"b1_png",
 					"name":"b1_png"
 				},
@@ -156,13 +136,28 @@
 				},
 				{
 					"isFolder":false,
-					"key":"finger_png",
-					"name":"finger_png"
+					"key":"main_03_png",
+					"name":"main_03_png"
 				},
 				{
 					"isFolder":false,
-					"key":"main_03_png",
-					"name":"main_03_png"
+					"key":"map_1_png",
+					"name":"map_1_png"
+				},
+				{
+					"isFolder":false,
+					"key":"map_2_png",
+					"name":"map_2_png"
+				},
+				{
+					"isFolder":false,
+					"key":"map_3_png",
+					"name":"map_3_png"
+				},
+				{
+					"isFolder":false,
+					"key":"map_4_png",
+					"name":"map_4_png"
 				}
 			]
 		}

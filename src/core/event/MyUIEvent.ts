@@ -12,4 +12,6 @@ class MyUIEvent extends egret.Event{
     /**登录*/
     public static LOGIN_SUCCESS: string = "LOGIN_SUCCESS";
     
+    public static OPEN_MISSION_LIST: string = "OPEN_MISSION_LIST";
+    
 }
