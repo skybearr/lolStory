@@ -13,7 +13,7 @@
 			"name":"login"
 		},
 		{
-			"keys":"Annie_5_jpg,Ashe_4_jpg,Caitlyn_2_jpg,String_json,b1_png,b2_png,b3_png,b4_png,b5_png,b6_png,btnbg_png,main_03_png,map_1_png,map_2_png,map_3_png,map_4_png,finger_png,mission_bg1_png,mission_bg2_png,mission_bg3_png,mission_bg4_png,monster_list_json,story_mission_list_json",
+			"keys":"String_json,b1_png,b2_png,b3_png,b4_png,b5_png,b6_png,btnbg_png,main_03_png,map_1_png,map_2_png,map_3_png,map_4_png,finger_png,mission_bg1_png,mission_bg2_png,mission_bg3_png,mission_bg4_png,monster_list_json,story_mission_list_json,story_chapter_json,story_mission_json,star_a_png,star_b_png",
 			"name":"game"
 		}
 	],
@@ -207,6 +207,51 @@
 			"name":"story_mission_list_json",
 			"type":"json",
 			"url":"assets/skybear/json_data/story_mission_list.json"
+		},
+		{
+			"name":"Sona_0_jpg",
+			"type":"image",
+			"url":"assets/skybear/game_ui/bg/Sona_0.jpg"
+		},
+		{
+			"name":"Ahri_0_jpg",
+			"type":"image",
+			"url":"assets/skybear/game_ui/bg/Ahri_0.jpg"
+		},
+		{
+			"name":"story_chapter_json",
+			"type":"json",
+			"url":"assets/skybear/json_data/story_chapter.json"
+		},
+		{
+			"name":"LeeSin_7_jpg",
+			"type":"image",
+			"url":"assets/skybear/game_ui/bg/LeeSin_7.jpg"
+		},
+		{
+			"name":"Soraka_2_jpg",
+			"type":"image",
+			"url":"assets/skybear/game_ui/bg/Soraka_2.jpg"
+		},
+		{
+			"name":"story_mission_json",
+			"type":"json",
+			"url":"assets/skybear/json_data/story_mission.json"
+		},
+		{
+			"name":"Sona_Square_0_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/icon/Sona_Square_0.png"
+		},
+		{
+			"name":"star_a_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/story/star_a.png"
+		},
+		{
+			"name":"star_b_png",
+			"type":"image",
+			"url":"assets/skybear/game_ui/story/star_b.png"
 		}
 	]
 }

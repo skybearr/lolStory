@@ -17,26 +17,11 @@ class DataManager extends egret.EventDispatcher {
     }
     
     private string_data_arr:Object[];
-    private story_list_data_arr:Object[];
     
     public initJsonData():void
     {
-        RES.getResByUrl("String_json",this.stringDataComplete,this,RES.ResourceItem.TYPE_JSON);
-        RES.getResByUrl("story_mission_list_json",this.storyListComplete,this,RES.ResourceItem.TYPE_JSON);
-    }
-    
-    public getStringJsonData(src: string): any {
-        return this.string_data_arr;
-    }
-    public getStoryListJsonData(src: string): any {
-        return this.story_list_data_arr;
-    }
-    
-    private stringDataComplete(e: any): void {
-        this.string_data_arr = e;
-    }
-    private storyListComplete(e: any): void {
-        this.story_list_data_arr = e;
+        this.string_data_arr = RES.getRes("String_json");
+        StoryLogic.getInstance().initData();
     }
     
     /**检测用户名*/

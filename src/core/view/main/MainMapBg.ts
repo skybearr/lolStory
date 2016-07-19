@@ -8,8 +8,8 @@ class MainMapBg extends eui.Group {
 
     private chapter_id: number
     private current_mission: number;//当前的大关卡  为/15的ceil
-    private mission_num: number;
-    private mission_data: number[];
+    private vo:StoryChapterVO;
+    private data_length:number = 3;
 
     public constructor() {
         super();
@@ -18,8 +18,7 @@ class MainMapBg extends eui.Group {
     }
 
     private onStage(): void {
-        this.mission_data = StoryLogic.getInstance().chapter_data[this.chapter_id - 1];
-        this.mission_num = this.mission_data.length / 3;
+        this.vo = StoryLogic.getInstance().getStoryChapterVOByID(this.chapter_id);
 
         this.current_mission = this.chapter_id == StoryLogic.getInstance().current_chapterID ?
             Math.ceil(StoryLogic.getInstance().current_missionID / StoryLogic.MISSION_LIST_NUM) - 1 : 999;//如果是以前的章节，全部已通关
@@ -27,13 +26,14 @@ class MainMapBg extends eui.Group {
 
         var img: egret.Texture = RES.getRes("map_" + this.chapter_id + "_png");
         this.addChild(new egret.Bitmap(img));
-        for(var i: number = 0;i < this.mission_num;i++) {
+        for(var i: number = 0;i < this.vo.mission_lists.length;i++) {
             /**状态 0锁定 1开启 2通关*/
             var state: number = i < this.current_mission ? StoryLogic.MISSION_STATE_FINISH :
                 (i == this.current_mission ? StoryLogic.MISSION_STATE_WANTED : StoryLogic.MISSION_STATE_LOCK);
-            var mission = new MissionBtn(i,this.mission_data[i * 3 + 2],state);
-            mission.x = this.mission_data[i * 3];
-            mission.y = this.mission_data[i * 3 + 1];
+            var v:MissionListVO = StoryLogic.getInstance().getMissionListVOByID(parseInt(this.vo.mission_lists[i]));
+            var mission = new MissionBtn(v,state);
+            mission.x = parseInt(v.mission_data[0]);
+            mission.y = parseInt(v.mission_data[1]);
             this.addChild(mission);
             this.mission_btn_arr.push(mission);
         }
@@ -42,6 +42,5 @@ class MainMapBg extends eui.Group {
     private clear(): void {
         this.removeChildren();
         this.mission_btn_arr = null;
-        this.mission_data = null;
     }
 }

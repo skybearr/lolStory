@@ -4,12 +4,13 @@
  *
  */
 class MissionListUI extends BaseSecondUI{
+    private bg:eui.Group;
     private back_btn: eui.Label;
     private title_txt: eui.Label;
     private mission_list_con: eui.Group;
 
     private mission_arr: MissionItemUI[];
-    private charter_id: number;
+    private vo: MissionListVO;
     /**当前最新关卡*/
     private newest_mission_id: number;
     /**当前点击的小关卡*/
@@ -19,10 +20,10 @@ class MissionListUI extends BaseSecondUI{
     private finger: eui.Image;
 
     /**设置关卡
-	 * @param chapterID 当前点击的章节id 1开始*/
-    public constructor(chapterID: number) {
+	 * @param mission_id 当前点击的关卡id 1开始*/
+    public constructor(mission_id: number) {
         super();
-        this.charter_id = chapterID;
+        this.vo = StoryLogic.getInstance().getMissionListVOByID(mission_id);
         this.skinName = "MissionListSkin";
         this.once(egret.Event.ADDED_TO_STAGE,this.onStage,this);
     }
@@ -30,18 +31,18 @@ class MissionListUI extends BaseSecondUI{
     private onStage(e: egret.Event): void {
         this.newest_mission_id = StoryLogic.getInstance().current_missionID;
 
-
+        RES.getResAsync(this.vo.bg,this.loadBg,this);
         this.mission_list_con = new eui.Group();
         this.mission_list_con.horizontalCenter = 0;
         this.mission_list_con.top = 200;
         this.addChild(this.mission_list_con);
         this.mission_arr = [];
         
-        var mission_num:number = 4;
-        for(var i: number = 0;i < mission_num;i++) {
+        for(var i: number = 0;i < this.vo.mission_ids.length;i++) {
             var star: number = i % 4;
             var state: number = this.getState(i);
-            var item: MissionItemUI = new MissionItemUI(i+1,star,state);
+            var v:MissionVO = StoryLogic.getInstance().getMissionVOByID(parseInt(this.vo.mission_ids[i]));
+            var item: MissionItemUI = new MissionItemUI(v,star,state);
             item.name = i.toString();
             item.x = (item.width_set + 60) * (i % 3);
             item.y = (item.height_set + 10) * Math.floor(i / 3);
@@ -57,6 +58,16 @@ class MissionListUI extends BaseSecondUI{
             this.addCurrentHand();
         }
         this.initEvent();
+    }
+    
+    private loadBg(data,key):void
+    {
+        var img = new eui.Image(data);
+        img.smoothing = true;
+        img.width = GlobalData.GameStage_width;
+        img.height = GlobalData.GameStage_height;
+        img.alpha = 0.8;
+        this.bg.addChild(img);
     }
 
     private addCurrentHand(): void {

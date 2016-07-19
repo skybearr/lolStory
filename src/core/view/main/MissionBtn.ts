@@ -9,18 +9,18 @@ class MissionBtn extends eui.Group {
     private lock_bmp: egret.Bitmap;
 
     private tw: egret.Tween;
-    private mission_id: number;//关卡索引  0，1，2
+    private vo: MissionListVO;
     private btn_width: number;
     /**状态 0锁定 1开启 2通关*/
     private state: number;
 
-    public constructor(id: number,width: number,state: number = 0) {
+    public constructor(v:MissionListVO,state: number = 0) {
         super();
-        this.mission_id = id;
-        this.btn_width = width;
+        this.vo = v;
+        this.btn_width = parseInt(v.mission_data[2]);
         this.state = state;
-        this.anchorOffsetX = width / 2;
-        this.anchorOffsetY = width / 2;
+        this.anchorOffsetX = this.btn_width / 2;
+        this.anchorOffsetY = this.btn_width / 2;
         this.init();
     }
 
@@ -67,7 +67,7 @@ class MissionBtn extends eui.Group {
 
     private clickMission(e: egret.TouchEvent): void {
         if(this.state != StoryLogic.MISSION_STATE_LOCK) {
-            UIManager.getInstance().openSecondUI(new MissionListUI(this.mission_id)); 
+            UIManager.getInstance().openSecondUI(new MissionListUI(this.vo.id)); 
         }
     }
 

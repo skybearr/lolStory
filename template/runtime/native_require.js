@@ -52,6 +52,9 @@ var game_file_list = [
 	"bin-debug/core/view/story/MissionListUI.js",
 	"bin-debug/core/view/story/StoryLogic.js",
 	"bin-debug/core/view/story/StoryUI.js",
+	"bin-debug/core/vo/MissionListVO.js",
+	"bin-debug/core/vo/MissionVO.js",
+	"bin-debug/core/vo/StoryChapterVO.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",
 	//----auto game_file_list end----
