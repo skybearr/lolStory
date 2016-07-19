@@ -72,6 +72,7 @@ class StoryLogic extends egret.EventDispatcher{
             var vv: MissionVO = new MissionVO();
             var o: Object = arr[i];
             vv.id = o['id'];
+            vv.mission_id = o['mission_id'];
             vv.name = o['name'];
             vv.icon = o['icon'];
             vv.avg_id = o['avg_id'];

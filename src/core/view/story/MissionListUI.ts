@@ -32,6 +32,7 @@ class MissionListUI extends BaseSecondUI{
         this.newest_mission_id = StoryLogic.getInstance().current_missionID;
 
         RES.getResAsync(this.vo.bg,this.loadBg,this);
+        
         this.mission_list_con = new eui.Group();
         this.mission_list_con.horizontalCenter = 0;
         this.mission_list_con.top = 200;
@@ -92,32 +93,32 @@ class MissionListUI extends BaseSecondUI{
     /**获取小关卡的状态  i 小关卡的索引 0-14*/
     private getState(i: number): number {
         return 1;
-//        if(this.charter_id < StoryLogic.getInstance().current_chapterID)//以前的章节
-//        {
-//            return StoryLogic.MISSION_ITEM_STATE_FINISH;
-//        }
-//        else {
-//            var index: number = Math.floor((this.newest_mission_id - 1) / StoryLogic.MISSION_LIST_NUM);//当前的大关卡
-//            if(this.mission_index < index) {
-//                return StoryLogic.MISSION_ITEM_STATE_FINISH;
-//            }
-//            else if(this.mission_index == index)//当前大关卡
-//            {
-//                if(i < (this.newest_mission_id - 1) % 15) {
-//                    return StoryLogic.MISSION_ITEM_STATE_FINISH;
-//                }
-//                else if(i == (this.newest_mission_id - 1) % 15) {
-//                    return StoryLogic.MISSION_ITEM_STATE_WANTED;
-//                }
-//                else {
-//                    return StoryLogic.MISSION_ITEM_STATE_LOCK;
-//                }
-//
-//            }
-//            else {
-//                return StoryLogic.MISSION_ITEM_STATE_LOCK;
-//            }
-//        }
+        if(this.charter_id < StoryLogic.getInstance().current_chapterID)//以前的章节
+        {
+            return StoryLogic.MISSION_ITEM_STATE_FINISH;
+        }
+        else {
+            var index: number = Math.floor((this.newest_mission_id - 1) / StoryLogic.MISSION_LIST_NUM);//当前的大关卡
+            if(this.mission_index < index) {
+                return StoryLogic.MISSION_ITEM_STATE_FINISH;
+            }
+            else if(this.mission_index == index)//当前大关卡
+            {
+                if(i < (this.newest_mission_id - 1) % 15) {
+                    return StoryLogic.MISSION_ITEM_STATE_FINISH;
+                }
+                else if(i == (this.newest_mission_id - 1) % 15) {
+                    return StoryLogic.MISSION_ITEM_STATE_WANTED;
+                }
+                else {
+                    return StoryLogic.MISSION_ITEM_STATE_LOCK;
+                }
+
+            }
+            else {
+                return StoryLogic.MISSION_ITEM_STATE_LOCK;
+            }
+        }
         
     }
 

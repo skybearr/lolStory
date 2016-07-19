@@ -26,7 +26,7 @@ class MissionItemUI extends eui.Group {
         
         this.star = new eui.Group();
         this.star.horizontalCenter = 0;
-        this.star.top = this.width_set + 18;
+        this.star.top = this.height_set - 40;
         this.addChild(this.star);
 
         this.changeState(state,star);
@@ -77,9 +77,8 @@ class MissionItemUI extends eui.Group {
         for(var i: number = 0;i < 3;i++) {
             var t: egret.Texture = RES.getRes(i < n ? "star_a_png" : "star_b_png");
             var s: eui.Image = new eui.Image(t);
-            s.anchorOffsetY = t.textureHeight / 2;
-            s.x = (t.textureWidth + 2) * i;
-            s.x = 35 * i;
+            s.width = s.height = 40;
+            s.x = 30 * i;
             this.star.addChild(s);
         }
     }

@@ -2,6 +2,6 @@
 <e:Skin class="MissionListSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707"/>
 	<e:Group id="bg" height="960" width="640" x="0" y="0"/>
-	<e:Label id="title_txt" text="第一章 XXXXXX" width="393" textColor="0xFA470B" bold="true" verticalAlign="bottom" textAlign="center" fontFamily="Courier New Baltic" horizontalCenter="4.5" y="50"/>
+	<e:Label id="title_txt" text="第一章 XXXXXX" width="393" bold="true" verticalAlign="bottom" textAlign="center" fontFamily="Courier New Baltic" horizontalCenter="4.5" y="50" textColor="0x35F00B"/>
 	<e:Label id="back_btn" width="81" y="52" text="返回" fontFamily="Courier New Baltic" textAlign="center" bold="true" verticalAlign="bottom" x="24" height="30" textColor="0x1D0FE0" background="true"/>
 </e:Skin>

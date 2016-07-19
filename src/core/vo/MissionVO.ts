@@ -8,6 +8,7 @@ class MissionVO {
 	}
 	
 	public id:number;
+	public mission_id:number;
 	public name:string;
 	public icon:string;
 	public monster_ids:string[];
