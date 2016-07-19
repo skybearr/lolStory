@@ -67,7 +67,7 @@ class MissionBtn extends eui.Group {
 
     private clickMission(e: egret.TouchEvent): void {
         if(this.state != StoryLogic.MISSION_STATE_LOCK) {
-            UIManager.getInstance().openSecondUI(new MissionListUI(this.mission_id));
+            UIManager.getInstance().openSecondUI(new MissionListUI(this.mission_id)); 
         }
     }
 
