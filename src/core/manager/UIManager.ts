@@ -63,8 +63,8 @@ class UIManager extends egret.EventDispatcher{
         {  
             GlobalData.GameStage.addChild(this.mainCon);
             GlobalData.GameStage.addChild(this.broadcastCon);
-            GlobalData.GameStage.addChild(this.storyCon);
             GlobalData.GameStage.addChild(this.secondCon);
+            GlobalData.GameStage.addChild(this.storyCon);
             GlobalData.GameStage.addChild(this.loadingCon);
             
             this.openFirstUI(UIManager.CLASS_UI_INDEX_LOGOANIMATION);
@@ -81,31 +81,6 @@ class UIManager extends egret.EventDispatcher{
 	{
         this.ui_class_arr = [LogoAnimation,LoginMain,MainUI,StoryUI];
 	}
-	
-	/**开始剧情*/
-    private startAVG(mission_id:number):void
-	{
-        AVGLogic.getInstance().startAVG(mission_id);
-	}
-	
-    /**开始战斗流程，第一步，判断是否需要显示剧情*/
-    public startFight(mission_id:number):void
-    {
-        //判断是否需要播放剧情
-        if(this.needAvg())
-        {
-            this.startAVG(mission_id);
-        }
-        else
-        {
-            FightLogic.getInstance().startFight(mission_id);
-        }
-    }
-    
-    private needAvg():boolean
-    {
-        return true;
-    }
 	
 	/**打开一级界面
 	 * @param index 界面的索引

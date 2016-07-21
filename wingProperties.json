@@ -81,11 +81,6 @@
 				},
 				{
 					"isFolder":false,
-					"key":"afda_png",
-					"name":"afda_png"
-				},
-				{
-					"isFolder":false,
 					"key":"b1_png",
 					"name":"b1_png"
 				},
@@ -166,23 +161,8 @@
 				},
 				{
 					"isFolder":false,
-					"key":"mission_bg1_png",
-					"name":"mission_bg1_png"
-				},
-				{
-					"isFolder":false,
-					"key":"mission_bg2_png",
-					"name":"mission_bg2_png"
-				},
-				{
-					"isFolder":false,
-					"key":"mission_bg3_png",
-					"name":"mission_bg3_png"
-				},
-				{
-					"isFolder":false,
-					"key":"mission_bg4_png",
-					"name":"mission_bg4_png"
+					"key":"Sona_0_jpg",
+					"name":"Sona_0_jpg"
 				},
 				{
 					"isFolder":false,
@@ -196,18 +176,13 @@
 				},
 				{
 					"isFolder":false,
-					"key":"Sona_0_jpg",
-					"name":"Sona_0_jpg"
+					"key":"Soraka_2_jpg",
+					"name":"Soraka_2_jpg"
 				},
 				{
 					"isFolder":false,
 					"key":"Sona_Square_0_png",
 					"name":"Sona_Square_0_png"
-				},
-				{
-					"isFolder":false,
-					"key":"Soraka_2_jpg",
-					"name":"Soraka_2_jpg"
 				},
 				{
 					"isFolder":false,
@@ -218,6 +193,26 @@
 					"isFolder":false,
 					"key":"star_b_png",
 					"name":"star_b_png"
+				},
+				{
+					"isFolder":false,
+					"key":"1111_png",
+					"name":"1111_png"
+				},
+				{
+					"isFolder":false,
+					"key":"missionitem_none_bg_png",
+					"name":"missionitem_none_bg_png"
+				},
+				{
+					"isFolder":false,
+					"key":"mission_bg_1_png",
+					"name":"mission_bg_1_png"
+				},
+				{
+					"isFolder":false,
+					"key":"MasterYi_Square_0_png",
+					"name":"MasterYi_Square_0_png"
 				}
 			]
 		}

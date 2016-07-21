@@ -22,14 +22,24 @@ class MissionItemUI extends eui.Group {
     public constructor(v:MissionVO,star: number,state: number) {
         super();
         this.vo = v;
-        RES.getResAsync(this.vo.icon,this.loadBg,this);
         
+        this.loadNoneBg();
         this.star = new eui.Group();
         this.star.horizontalCenter = 0;
         this.star.top = this.height_set - 40;
         this.addChild(this.star);
 
         this.changeState(state,star);
+        RES.getResAsync(this.vo.icon,this.loadBg,this);
+    }
+    
+    private loadNoneBg():void
+    {
+        var img = new eui.Image(RES.getRes("missionitem_none_bg_png"));
+        img.smoothing = true;
+        img.width = this.width_set;
+        img.height = this.height_set - 40;
+        this.addChild(img);
     }
     
     private loadBg(data,key):void
@@ -38,7 +48,8 @@ class MissionItemUI extends eui.Group {
         this.bg.smoothing = true;
         this.bg.width = this.width_set;
         this.bg.height = this.height_set - 40;
-        this.addChildAt(this.bg,0);
+        this.addChildAt(this.bg,1);
+        this.bg.visible = this.state != StoryLogic.MISSION_ITEM_STATE_LOCK;
     }
 
     public changeState(s: number,star_num: number): void {
@@ -53,6 +64,10 @@ class MissionItemUI extends eui.Group {
         else if(s == StoryLogic.MISSION_ITEM_STATE_WANTED) {//当前关卡  星级为0
             this.addNumImage();
             this.changeStar(2);
+            if(this.bg != null)
+            {
+                this.bg.visible = true;
+            }
         }
         else//已通关 星级正常显示
         {

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="LoadingInGameSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Label id="txt" width="282" size="20" fontFamily="宋体" horizontalCenter="20" text="战斗资源加载中" textColor="0x5DF312" y="339"/>
+	<ns1:BaseProgressBar id="bar" x="170" y="389" skinName="LoadingProgressBar"/>
+</e:Skin>

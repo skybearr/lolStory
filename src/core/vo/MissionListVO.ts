@@ -8,6 +8,7 @@ class MissionListVO {
 	}
 	
     public id:number;
+    public chapter_id:number;
 	public name:string;
 	/**332，323，100 ----x,y,width*/
     public mission_data:string[];

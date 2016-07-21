@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="AvgMainSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707" locked="true"/>
+	<e:Group id="bg" height="960" width="640" x="0" y="0" locked="true"/>
+	<e:Rect height="160" width="640" x="0" bottom="0" fillColor="0x372813" alpha="0.6"/>
+	<e:Label id="txt" x="130" y="817" width="373" height="131" size="18" verticalAlign="top" textAlign="left" lineSpacing="5" fontFamily="Microsoft Sans Serif" touchEnabled="false"/>
+
+</e:Skin>

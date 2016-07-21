@@ -3,10 +3,13 @@
   "autoGenerateExmlsList": true,
   "exmls": [
     "resource/skins/LoadingProgressBar.exml",
+    "resource/skins/LoadingInGameSkin.exml",
     "resource/skins/LoadingSkin.exml",
     "resource/skins/ServerSelectSkin.exml",
     "resource/skins/LoginMainSkin.exml",
     "resource/skins/LogoAnimationSkin.exml",
+    "resource/skins/main/AvgMainSkin.exml",
+    "resource/skins/main/FightMainSkin.exml",
     "resource/skins/main/MissionListSkin.exml",
     "resource/skins/main/RoleInfoSkin.exml",
     "resource/skins/MissionListSkin.exml",

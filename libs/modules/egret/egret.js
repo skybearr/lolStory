@@ -2993,34 +2993,47 @@ var egret;
          * @private
          * 更新对象在舞台上的显示区域,返回显示区域是否发生改变。
          */
-        p.$update = function (bounds) {
-            //todo 计算滤镜占用区域
+        p.$update = function (dirtyRegionPolicy, bounds) {
             this.$removeFlagsUp(768 /* Dirty */);
             var node = this.$renderNode;
+            node.renderAlpha = this.$getConcatenatedAlpha();
             //必须在访问moved属性前调用以下两个方法，因为moved属性在以下两个方法内重置。
             var concatenatedMatrix = this.$getConcatenatedMatrix();
-            var renderBounds = bounds || this.$getContentBounds();
-            node.renderAlpha = this.$getConcatenatedAlpha();
-            node.renderVisible = this.$getConcatenatedVisible();
-            var displayList = this.$displayList || this.$parentDisplayList;
-            var region = node.renderRegion;
-            if (!displayList) {
-                region.setTo(0, 0, 0, 0);
+            if (dirtyRegionPolicy == egret.DirtyRegionPolicy.OFF) {
+                var displayList = this.$displayList || this.$parentDisplayList;
+                if (!displayList) {
+                    return false;
+                }
+                var matrix = node.renderMatrix;
+                matrix.copyFrom(concatenatedMatrix);
+                var root = displayList.root;
+                if (root !== this.$stage) {
+                    this.$getConcatenatedMatrixAt(root, matrix);
+                }
+            }
+            else {
+                var renderBounds = bounds || this.$getContentBounds();
+                node.renderVisible = this.$getConcatenatedVisible();
+                var displayList = this.$displayList || this.$parentDisplayList;
+                var region = node.renderRegion;
+                if (!displayList) {
+                    region.setTo(0, 0, 0, 0);
+                    node.moved = false;
+                    return false;
+                }
+                if (!node.moved) {
+                    return false;
+                }
                 node.moved = false;
-                return false;
+                var matrix = node.renderMatrix;
+                matrix.copyFrom(concatenatedMatrix);
+                var root = displayList.root;
+                if (root !== this.$stage) {
+                    this.$getConcatenatedMatrixAt(root, matrix);
+                }
+                renderBounds = this.$measureFiltersBounds(renderBounds);
+                region.updateRegion(renderBounds, matrix);
             }
-            if (!node.moved) {
-                return false;
-            }
-            node.moved = false;
-            var matrix = node.renderMatrix;
-            matrix.copyFrom(concatenatedMatrix);
-            var root = displayList.root;
-            if (root !== this.$stage) {
-                this.$getConcatenatedMatrixAt(root, matrix);
-            }
-            renderBounds = this.$measureFiltersBounds(renderBounds);
-            region.updateRegion(renderBounds, matrix);
             return true;
         };
         /**
@@ -3057,24 +3070,24 @@ var egret;
                         var angle = filter.angle || 0;
                         var distanceX = 0;
                         var distanceY = 0;
-                        if (distance != 0 && angle != 0) {
+                        if (distance != 0) {
                             //todo 缓存这个数据
                             distanceX = Math.ceil(distance * egret.NumberUtils.cos(angle));
                             distanceY = Math.ceil(distance * egret.NumberUtils.sin(angle));
                             if (distanceX > 0) {
-                                x += distanceX;
+                                // x += distanceX;
                                 w += distanceX;
                             }
                             else if (distanceX < 0) {
-                                x -= distanceX;
+                                x += distanceX;
                                 w -= distanceX;
                             }
                             if (distanceY > 0) {
-                                y += distanceY;
+                                // y += distanceY;
                                 h += distanceY;
                             }
                             else if (distanceY < 0) {
-                                y -= distanceY;
+                                y += distanceY;
                                 h -= distanceY;
                             }
                         }
@@ -5982,8 +5995,8 @@ var egret;
             else {
                 this.arcBounds(x, y, radius, startAngle, endAngle);
             }
-            var endX = x + egret.$cos(endAngle) * radius;
-            var endY = y + egret.$sin(endAngle) * radius;
+            var endX = x + Math.cos(endAngle) * radius;
+            var endY = y + Math.sin(endAngle) * radius;
             this.updatePosition(endX, endY);
             this.$renderNode.dirtyRender = true;
         };
@@ -10844,9 +10857,9 @@ var egret;
          * @param blurX {number} 水平模糊量。有效值为 0 到 255（浮点）。
          * @param blurY {number} 垂直模糊量。有效值为 0 到 255（浮点）。
          * @param strength {number} 印记或跨页的强度。该值越高，压印的颜色越深，而且发光与背景之间的对比度也越强。有效值为 0 到 255。
-         * @param quality {number} 应用滤镜的次数。
-         * @param inner {boolean} 指定发光是否为内侧发光。值 true 指定发光是内侧发光。值 false 指定发光是外侧发光（对象外缘周围的发光）。暂未实现。
-         * @param knockout {number} 指定对象是否具有挖空效果。值为 true 将使对象的填充变为透明，并显示文档的背景颜色。暂未实现。
+         * @param quality {number} 应用滤镜的次数。暂未实现。
+         * @param inner {boolean} 指定发光是否为内侧发光。值 true 指定发光是内侧发光。值 false 指定发光是外侧发光（对象外缘周围的发光）。
+         * @param knockout {number} 指定对象是否具有挖空效果。值为 true 将使对象的填充变为透明，并显示文档的背景颜色。
          * @version Egret 2.4
          * @platform Web,Native
          */
@@ -10860,20 +10873,119 @@ var egret;
             if (inner === void 0) { inner = false; }
             if (knockout === void 0) { knockout = false; }
             _super.call(this);
-            this.color = color;
-            this.alpha = alpha;
-            this.blurX = blurX;
-            this.blurY = blurY;
-            this.strength = strength;
-            this.quality = quality;
-            this.inner = inner;
-            this.knockout = knockout;
             this.type = "glow";
+            this.$color = color;
             this.$blue = color & 0x0000FF;
             this.$green = (color & 0x00ff00) >> 8;
             this.$red = color >> 16;
+            this.$alpha = alpha;
+            this.$blurX = blurX;
+            this.$blurY = blurY;
+            this.$strength = strength;
+            this.$quality = quality;
+            this.$inner = inner;
+            this.$knockout = knockout;
         }
         var d = __define,c=GlowFilter,p=c.prototype;
+        d(p, "color"
+            ,function () {
+                return this.$color;
+            }
+            ,function (value) {
+                if (this.$color == value) {
+                    return;
+                }
+                this.$color = value;
+                this.$blue = value & 0x0000FF;
+                this.$green = (value & 0x00ff00) >> 8;
+                this.$red = value >> 16;
+                this.invalidate();
+            }
+        );
+        d(p, "alpha"
+            ,function () {
+                return this.$alpha;
+            }
+            ,function (value) {
+                if (this.$alpha == value) {
+                    return;
+                }
+                this.$alpha = value;
+                this.invalidate();
+            }
+        );
+        d(p, "blurX"
+            ,function () {
+                return this.$blurX;
+            }
+            ,function (value) {
+                if (this.$blurX == value) {
+                    return;
+                }
+                this.$blurX = value;
+                this.invalidate();
+            }
+        );
+        d(p, "blurY"
+            ,function () {
+                return this.$blurY;
+            }
+            ,function (value) {
+                if (this.$blurY == value) {
+                    return;
+                }
+                this.$blurY = value;
+                this.invalidate();
+            }
+        );
+        d(p, "strength"
+            ,function () {
+                return this.$strength;
+            }
+            ,function (value) {
+                if (this.$strength == value) {
+                    return;
+                }
+                this.$strength = value;
+                this.invalidate();
+            }
+        );
+        d(p, "quality"
+            ,function () {
+                return this.$quality;
+            }
+            ,function (value) {
+                if (this.$quality == value) {
+                    return;
+                }
+                this.$quality = value;
+                this.invalidate();
+            }
+        );
+        d(p, "inner"
+            ,function () {
+                return this.$inner;
+            }
+            ,function (value) {
+                if (this.$inner == value) {
+                    return;
+                }
+                this.$inner = value;
+                this.invalidate();
+            }
+        );
+        d(p, "knockout"
+            ,function () {
+                return this.$knockout;
+            }
+            ,function (value) {
+                if (this.$knockout == value) {
+                    return;
+                }
+                this.$knockout = value;
+                this.invalidate();
+            }
+        );
         return GlowFilter;
     }(egret.Filter));
     egret.GlowFilter = GlowFilter;
@@ -10929,14 +11041,14 @@ var egret;
          * @param alpha {number} 颜色的 Alpha 透明度值。有效值为 0 到 1。例如，0.25 设置透明度值为 25%。
          * @param blurX {number} 水平模糊量。有效值为 0 到 255（浮点）。
          * @param blurY {number} 垂直模糊量。有效值为 0 到 255（浮点）。
-         * @param strength {number} 印记或跨页的强度。该值越高，压印的颜色越深，而且发光与背景之间的对比度也越强。有效值为 0 到 255。暂未实现。
-         * @param quality {number} 应用滤镜的次数。
-         * @param inner {boolean} 指定发光是否为内侧发光。值 true 指定发光是内侧发光。值 false 指定发光是外侧发光（对象外缘周围的发光）。暂未实现。
-         * @param knockout {number} 指定对象是否具有挖空效果。值为 true 将使对象的填充变为透明，并显示文档的背景颜色。暂未实现。
+         * @param strength {number} 印记或跨页的强度。该值越高，压印的颜色越深，而且发光与背景之间的对比度也越强。有效值为 0 到 255。
+         * @param quality {number} 应用滤镜的次数。暂未实现。
+         * @param inner {boolean} 指定发光是否为内侧发光。值 true 指定发光是内侧发光。值 false 指定发光是外侧发光（对象外缘周围的发光）。
+         * @param knockout {number} 指定对象是否具有挖空效果。值为 true 将使对象的填充变为透明，并显示文档的背景颜色。
          * @version Egret 2.4
          * @platform Web,Native
          */
-        function DropShadowFilter(distance, angle, color, alpha, blurX, blurY, strength, quality, inner, knockout, hideObject) {
+        function DropShadowFilter(distance, angle, color, alpha, blurX, blurY, strength, quality, inner, knockout) {
             if (distance === void 0) { distance = 4.0; }
             if (angle === void 0) { angle = 45; }
             if (color === void 0) { color = 0; }
@@ -10947,12 +11059,35 @@ var egret;
             if (quality === void 0) { quality = 1; }
             if (inner === void 0) { inner = false; }
             if (knockout === void 0) { knockout = false; }
-            if (hideObject === void 0) { hideObject = false; }
             _super.call(this, color, alpha, blurX, blurY, strength, quality, inner, knockout);
-            this.distance = distance;
-            this.angle = angle;
+            this.$distance = distance;
+            this.$angle = angle;
         }
         var d = __define,c=DropShadowFilter,p=c.prototype;
+        d(p, "distance"
+            ,function () {
+                return this.$distance;
+            }
+            ,function (value) {
+                if (this.$distance == value) {
+                    return;
+                }
+                this.$distance = value;
+                this.invalidate();
+            }
+        );
+        d(p, "angle"
+            ,function () {
+                return this.$angle;
+            }
+            ,function (value) {
+                if (this.$angle == value) {
+                    return;
+                }
+                this.$angle = value;
+                this.invalidate();
+            }
+        );
         return DropShadowFilter;
     }(egret.GlowFilter));
     egret.DropShadowFilter = DropShadowFilter;
@@ -10989,54 +11124,8 @@ var egret;
 var egret;
 (function (egret) {
     var PI = Math.PI;
-    var HalfPI = PI / 2;
-    var PacPI = PI + HalfPI;
     var TwoPI = PI * 2;
-    var DEG_TO_RAD = Math.PI / 180;
-    /**
-     * @private
-     */
-    function cos(angle) {
-        switch (angle) {
-            case HalfPI:
-            case -PacPI:
-                return 0;
-            case PI:
-            case -PI:
-                return -1;
-            case PacPI:
-            case -HalfPI:
-                return 0;
-            default:
-                return Math.cos(angle);
-        }
-    }
-    /**
-     * @private
-     */
-    function sin(angle) {
-        switch (angle) {
-            case HalfPI:
-            case -PacPI:
-                return 1;
-            case PI:
-            case -PI:
-                return 0;
-            case PacPI:
-            case -HalfPI:
-                return -1;
-            default:
-                return Math.sin(angle);
-        }
-    }
-    /**
-     * @private
-     */
-    egret.$cos = cos;
-    /**
-     * @private
-     */
-    egret.$sin = sin;
+    var DEG_TO_RAD = PI / 180;
     var matrixPool = [];
     /**
      * @language en_US
@@ -11304,8 +11393,9 @@ var egret;
         p.rotate = function (angle) {
             angle = +angle;
             if (angle !== 0) {
-                var u = cos(angle);
-                var v = sin(angle);
+                angle = angle / DEG_TO_RAD;
+                var u = egret.NumberUtils.cos(angle);
+                var v = egret.NumberUtils.sin(angle);
                 var ta = this.a;
                 var tb = this.b;
                 var tc = this.c;
@@ -11749,15 +11839,17 @@ var egret;
                 this.d = scaleY;
                 return;
             }
-            var u = cos(skewX);
-            var v = sin(skewX);
+            skewX = skewX / DEG_TO_RAD;
+            skewY = skewY / DEG_TO_RAD;
+            var u = egret.NumberUtils.cos(skewX);
+            var v = egret.NumberUtils.sin(skewX);
             if (skewX == skewY) {
                 this.a = u * scaleX;
                 this.b = v * scaleX;
             }
             else {
-                this.a = cos(skewY) * scaleX;
-                this.b = sin(skewY) * scaleX;
+                this.a = egret.NumberUtils.cos(skewY) * scaleX;
+                this.b = egret.NumberUtils.sin(skewY) * scaleX;
             }
             this.c = -v * scaleY;
             this.d = u * scaleY;
@@ -11863,7 +11955,7 @@ var egret;
     locale_strings[3011] = "Index:\"{0}\" is out of the visual element index range";
     locale_strings[3012] = "This method is not available in Scroller component!";
     locale_strings[3013] = "UIStage is GUI root container, and only one such instant is in the display list！";
-    locale_strings[3014] = "Webkit fullscreen error";
+    locale_strings[3014] = "set fullscreen error";
     //socket 3100-3199
     locale_strings[3100] = "Current browser does not support WebSocket";
     locale_strings[3101] = "Please connect Socket firstly";
@@ -12950,7 +13042,7 @@ var egret;
              * @private
              * 更新对象在舞台上的显示区域和透明度,返回显示区域是否发生改变。
              */
-            p.$update = function () {
+            p.$update = function (dirtyRegionPolicy) {
                 var target = this.root;
                 //当cache对象的显示列表已经加入dirtyList，对象又取消cache的时候，root为空
                 if (target == null) {
@@ -12961,28 +13053,45 @@ var egret;
                 //这里不需要更新node.renderAlpha。因为alpha已经写入到缓存的内部
                 //必须在访问moved属性前调用以下两个方法，因为moved属性在以下两个方法内重置。
                 var concatenatedMatrix = target.$getConcatenatedMatrix();
-                var bounds = target.$getOriginalBounds();
-                var displayList = target.$parentDisplayList;
-                var region = node.renderRegion;
-                if (this.needUpdateRegions) {
-                    this.updateDirtyRegions();
+                if (dirtyRegionPolicy == egret.DirtyRegionPolicy.OFF) {
+                    var displayList = target.$parentDisplayList;
+                    if (this.needUpdateRegions) {
+                        this.updateDirtyRegions();
+                    }
+                    if (!displayList) {
+                        return false;
+                    }
+                    var matrix = node.renderMatrix;
+                    matrix.copyFrom(concatenatedMatrix);
+                    var root = displayList.root;
+                    if (root !== target.$stage) {
+                        target.$getConcatenatedMatrixAt(root, matrix);
+                    }
                 }
-                if (!displayList) {
-                    region.setTo(0, 0, 0, 0);
+                else {
+                    var bounds = target.$getOriginalBounds();
+                    var displayList = target.$parentDisplayList;
+                    var region = node.renderRegion;
+                    if (this.needUpdateRegions) {
+                        this.updateDirtyRegions();
+                    }
+                    if (!displayList) {
+                        region.setTo(0, 0, 0, 0);
+                        node.moved = false;
+                        return false;
+                    }
+                    if (!node.moved) {
+                        return false;
+                    }
                     node.moved = false;
-                    return false;
+                    var matrix = node.renderMatrix;
+                    matrix.copyFrom(concatenatedMatrix);
+                    var root = displayList.root;
+                    if (root !== target.$stage) {
+                        target.$getConcatenatedMatrixAt(root, matrix);
+                    }
+                    region.updateRegion(bounds, matrix);
                 }
-                if (!node.moved) {
-                    return false;
-                }
-                node.moved = false;
-                var matrix = node.renderMatrix;
-                matrix.copyFrom(concatenatedMatrix);
-                var root = displayList.root;
-                if (root !== target.$stage) {
-                    target.$getConcatenatedMatrixAt(root, matrix);
-                }
-                region.updateRegion(bounds, matrix);
                 return true;
             };
             /**
@@ -13034,7 +13143,7 @@ var egret;
                                 node.needRedraw = true;
                             }
                         }
-                        var moved = display.$update();
+                        var moved = display.$update(this.$dirtyRegionPolicy);
                         if (node.renderAlpha > 0 && node.renderVisible && (moved || !node.needRedraw)) {
                             if (dirtyRegion.addRegion(node.renderRegion)) {
                                 node.needRedraw = true;
@@ -13045,7 +13154,7 @@ var egret;
                         if (dirtyRegion.addRegion(node.renderRegion)) {
                             node.needRedraw = true;
                         }
-                        var moved = display.$update();
+                        var moved = display.$update(this.$dirtyRegionPolicy);
                         if (moved || !node.needRedraw) {
                             if (dirtyRegion.addRegion(node.renderRegion)) {
                                 node.needRedraw = true;
@@ -17122,6 +17231,15 @@ var egret;
         };
         /**
          * @private
+         */
+        p.getConfig = function (name, key) {
+            if (!this.charList[name]) {
+                return 0;
+            }
+            return this.charList[name][key];
+        };
+        /**
+         * @private
          *
          * @returns
          */
@@ -17174,6 +17292,7 @@ var egret;
                 c["h"] = this.getConfigByKey(charText, "height");
                 c["offX"] = this.getConfigByKey(charText, "xoffset");
                 c["offY"] = this.getConfigByKey(charText, "yoffset");
+                c["xadvance"] = this.getConfigByKey(charText, "xadvance");
             }
             return chars;
         };
@@ -17593,7 +17712,7 @@ var egret;
                     node.imageWidth = texture._sourceWidth;
                     node.imageHeight = texture._sourceHeight;
                     node.drawImage(texture._bitmapX, texture._bitmapY, bitmapWidth, bitmapHeight, xPos + texture._offsetX, yPos + texture._offsetY, texture.$getScaleBitmapWidth(), texture.$getScaleBitmapHeight());
-                    xPos += texture.$getTextureWidth() + values[4 /* letterSpacing */];
+                    xPos += bitmapFont.getConfig(character, "xadvance") || (texture.$getTextureWidth() + values[4 /* letterSpacing */]);
                 }
                 yPos += lineHeight + values[3 /* lineSpacing */];
             }
@@ -17732,11 +17851,23 @@ var egret;
                         line = line.substring(j);
                         len = line.length;
                         j = 0;
-                        xPos = texureWidth;
+                        //最后一个字符要计算纹理宽度，而不是xadvance
+                        if (j == len - 1) {
+                            xPos = texureWidth;
+                        }
+                        else {
+                            xPos = bitmapFont.getConfig(character, "xadvance") || texureWidth;
+                        }
                         lineHeight = textureHeight;
                         continue;
                     }
-                    xPos += texureWidth;
+                    //最后一个字符要计算纹理宽度，而不是xadvance
+                    if (j == len - 1) {
+                        xPos += texureWidth;
+                    }
+                    else {
+                        xPos += bitmapFont.getConfig(character, "xadvance") || texureWidth;
+                    }
                     lineHeight = Math.max(textureHeight, lineHeight);
                 }
                 if (textFieldHeight && i > 0 && textHeight > textFieldHeight) {
@@ -19788,9 +19919,9 @@ var egret;
             this.$invalidateContentBounds();
             this.$TextField[18 /* textLinesChanged */] = true;
         };
-        p.$update = function (bounds) {
+        p.$update = function (dirtyRegionPolicy, bounds) {
             var tmpBounds = this.$getRenderBounds();
-            var result = _super.prototype.$update.call(this, tmpBounds);
+            var result = _super.prototype.$update.call(this, dirtyRegionPolicy, tmpBounds);
             egret.Rectangle.release(tmpBounds);
             return result;
         };
@@ -22160,6 +22291,9 @@ var egret;
             var valueFloor = Math.floor(value);
             var valueCeil = valueFloor + 1;
             var resultFloor = NumberUtils.sinInt(valueFloor);
+            if (valueFloor == value) {
+                return resultFloor;
+            }
             var resultCeil = NumberUtils.sinInt(valueCeil);
             return (value - valueFloor) * resultCeil + (valueCeil - value) * resultFloor;
         };
@@ -22174,16 +22308,7 @@ var egret;
             if (value < 0) {
                 value += 360;
             }
-            if (value < 90) {
-                return egret_sin_map[value];
-            }
-            if (value < 180) {
-                return egret_cos_map[value - 90];
-            }
-            if (value < 270) {
-                return -egret_sin_map[value - 180];
-            }
-            return -egret_cos_map[value - 270];
+            return egret_sin_map[value];
         };
         /**
          * @language en_US
@@ -22205,6 +22330,9 @@ var egret;
             var valueFloor = Math.floor(value);
             var valueCeil = valueFloor + 1;
             var resultFloor = NumberUtils.cosInt(valueFloor);
+            if (valueFloor == value) {
+                return resultFloor;
+            }
             var resultCeil = NumberUtils.cosInt(valueCeil);
             return (value - valueFloor) * resultCeil + (valueCeil - value) * resultFloor;
         };
@@ -22219,16 +22347,7 @@ var egret;
             if (value < 0) {
                 value += 360;
             }
-            if (value < 90) {
-                return egret_cos_map[value];
-            }
-            if (value < 180) {
-                return -egret_sin_map[value - 90];
-            }
-            if (value < 270) {
-                return -egret_cos_map[value - 180];
-            }
-            return egret_sin_map[value - 270];
+            return egret_cos_map[value];
         };
         return NumberUtils;
     }());
@@ -22238,10 +22357,16 @@ var egret;
 var egret_sin_map = {};
 var egret_cos_map = {};
 var DEG_TO_RAD = Math.PI / 180;
-for (var NumberUtils_i = 0; NumberUtils_i <= 90; NumberUtils_i++) {
+for (var NumberUtils_i = 0; NumberUtils_i < 360; NumberUtils_i++) {
     egret_sin_map[NumberUtils_i] = Math.sin(NumberUtils_i * DEG_TO_RAD);
     egret_cos_map[NumberUtils_i] = Math.cos(NumberUtils_i * DEG_TO_RAD);
 }
+egret_sin_map[90] = 1;
+egret_cos_map[90] = 0;
+egret_sin_map[180] = 0;
+egret_cos_map[180] = -1;
+egret_sin_map[270] = -1;
+egret_cos_map[270] = 0;
 //对未提供bind的浏览器实现bind机制
 if (!Function.prototype.bind) {
     Function.prototype.bind = function (oThis) {

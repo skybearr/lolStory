@@ -24,9 +24,6 @@ class StoryLogic extends egret.EventDispatcher{
     public static MISSION_ITEM_STATE_WANTED: number = 1;
     public static MISSION_ITEM_STATE_FINISH: number = 2;
     
-    /**没一个大关卡中小关卡的数量*/
-    public static MISSION_LIST_NUM  :number = 15;
-    
     /**大章节数据*/
     public chapter_data_arr:StoryChapterVO[];
     /**大关卡数据*/
@@ -35,9 +32,14 @@ class StoryLogic extends egret.EventDispatcher{
     public mission_data_arr: MissionVO[];
                             
     /**当前已经打到的最新章节*/
-    public current_chapterID: number = 1;
-    /**当前已经打到的最新关卡*/
-    public current_missionID: number = 2;
+    public current_chapterID: number;
+    /**当前已经打到的大关卡*/
+    public current_missionListID: number;
+    /**当前已经打到的小关卡*/
+    public current_missionID: number;
+    
+    /**当前关卡唯一id*/
+    public current_mission_uid:number;
                  
     /**初始化配置里的数据*/
     public initData():void
@@ -79,6 +81,34 @@ class StoryLogic extends egret.EventDispatcher{
             vv.monster_ids = o['monster_ids'].split(",");
             this.mission_data_arr.push(vv);
         }
+        
+        this.openStory();
+    }
+    
+    /**判断这一关卡是否需要剧情*/
+    public needAvg(mission_id: number): boolean {
+        if(mission_id < this.current_mission_uid)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    
+    /**获取这个剧情需要加载的资源列表*/
+    public getSourceKeysByID(id: number): string[] {
+        var keys: string[] = [];
+        var vo:AvgVO = AVGLogic.getInstance().getAVGVOByID(id);
+        for(var i:number=0;i<vo.dialogs.length;i++){
+            var v:AvgDialogVO = vo.dialogs[i];
+            if(keys.indexOf(v.head) == -1){
+                keys.push(v.head);
+            }
+        }
+        keys.push(vo.bg);
+        return keys;
     }
     
     public getStoryChapterVOByID(id: number): StoryChapterVO {
@@ -94,14 +124,10 @@ class StoryLogic extends egret.EventDispatcher{
     public openStory():void
     {
         //获取网络数据，得到关卡信息
-        this.current_chapterID = 1;
-        this.current_missionID = 2;
-        
-        this.openUI();
-    }
-    
-    private openUI():void
-    {
-        UIManager.getInstance().openFirstUI(UIManager.CLASS_UI_INDEX_STORY,TweenManager.TWEEN_UI_MOVE);
+        this.current_mission_uid = 1001001;
+        var a: number = this.current_mission_uid % 1000000;
+        this.current_chapterID = Math.floor(this.current_mission_uid / 1000000);
+        this.current_missionListID = Math.floor(a / 1000);
+        this.current_missionID = a % 1000;
     }
 }

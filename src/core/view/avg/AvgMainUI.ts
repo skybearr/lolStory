@@ -4,7 +4,124 @@
  *
  */
 class AvgMainUI extends eui.Component{
-	public constructor() {
+    private bg:eui.Group;
+    private txt:eui.Label;
+    private bg_img:eui.Image;
+    private head:eui.Image;
+    private finger:eui.Image;
+    
+    private words:string[];
+    private timer:egret.Timer;
+    private vo:AvgVO;
+    private current_dialog_index:number;
+    private current_dialog:AvgDialogVO;
+    private words_index:number;
+    
+	public constructor(id:number) {
     	super();
+    	this.vo = AVGLogic.getInstance().getAVGVOByID(id);
+        this.skinName = "AvgMainSkin";
 	}
+	
+    protected childrenCreated():void
+	{
+	    super.childrenCreated();
+        this.bg_img = new eui.Image(RES.getRes(this.vo.bg));
+	    this.bg.addChild(this.bg_img);
+	    
+        this.finger = new eui.Image(RES.getRes("finger_png"));
+        this.finger.smoothing = true;
+        this.finger.scaleX = this.finger.scaleY = 0.4;
+        this.finger.right = 120;
+        this.finger.bottom = 12;
+        this.finger.visible = false;
+        this.addChild(this.finger);
+        
+        this.timer = new egret.Timer(100);
+        this.timer.addEventListener(egret.TimerEvent.TIMER,this.delay,this);
+        this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.dialogSubOver,this);
+        this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.click,this);
+        
+        this.current_dialog_index = 0;
+        this.start();
+	}
+	
+	private start():void
+	{
+    	  this.finger.visible = false;
+        this.current_dialog = this.vo.dialogs[this.current_dialog_index];
+        this.words_index = 0;
+        this.txt.text = "";
+        this.words = this.current_dialog.words.split("");
+        if(this.head != null && this.head.parent != null) {
+            this.head.parent.removeChild(this.head);
+        }
+        this.head = new eui.Image(RES.getRes(this.current_dialog.head));
+        if(this.current_dialog.is_left) {
+            this.head.left = 0;
+        }
+        else {
+            this.head.right = 0;
+        }
+        this.head.bottom = 30;
+        this.addChild(this.head);
+        
+        this.timer.start();
+	}
+	
+	private delay():void
+	{
+        if(this.words_index >= this.words.length) {
+            this.dialogSubOver();
+        }
+        else {
+            this.txt.text += this.words[this.words_index];
+            this.words_index++;
+        }
+	}
+	
+	private dialogSubOver():void
+	{
+        this.timer.reset();
+        this.txt.text = this.current_dialog.words;
+        this.finger.visible = true;
+	}
+	
+	private click():void
+	{
+	    if(this.timer.running){//如果正在进行，直接全部显示
+	        this.dialogSubOver();
+	    }
+	    else{//显示完毕，点击下一条
+    	    this.current_dialog_index ++;
+    	    if(this.current_dialog_index >= this.vo.dialogs.length)
+         {
+             this.over();
+         }
+	       else{
+	            this.start();
+	       }
+	    }
+	}
+	
+	/**剧情结束*/
+	private over():void
+	{
+    	  if(this.parent != null){
+    	      this.parent.removeChild(this);
+    	      this.clear();
+    	      FightLogic.getInstance().startFightReal();
+    	  }
+	}
+	
+	private clear():void
+	{
+        this.timer.start();
+        this.timer.removeEventListener(egret.TimerEvent.TIMER,this.delay,this);
+        this.timer.removeEventListener(egret.TimerEvent.TIMER_COMPLETE,this.dialogSubOver,this);
+        this.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.click,this);
+        this.current_dialog = null;
+        this.vo = null;
+	}
+	
 }

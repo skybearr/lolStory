@@ -3119,7 +3119,12 @@ var egret;
                     download();
                 }
                 else {
-                    onLoadComplete();
+                    if (__global.setTimeout) {
+                        __global.setTimeout(onLoadComplete, 0);
+                    }
+                    else {
+                        egret.$callAsync(onLoadComplete, self);
+                    }
                 }
                 function download() {
                     var promise = egret.PromiseObject.create();
@@ -4734,8 +4739,8 @@ var egret;
              *
              */
             p.$hide = function () {
-                this.dispatchEvent(new egret.Event("blur"));
                 egret_native.TextInputOp.setKeybordOpen(false);
+                this.dispatchEvent(new egret.Event("blur"));
             };
             p.$resetStageText = function () {
             };

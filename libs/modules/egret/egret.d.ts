@@ -1894,7 +1894,7 @@ declare module egret {
          * @private
          * 更新对象在舞台上的显示区域,返回显示区域是否发生改变。
          */
-        $update(bounds?: Rectangle): boolean;
+        $update(dirtyRegionPolicy: string, bounds?: Rectangle): boolean;
         private static boundsForUpdate;
         /**
          * @private
@@ -7025,14 +7025,6 @@ declare module egret {
      * @platform Web,Native
      */
     class GlowFilter extends Filter {
-        color: number;
-        alpha: number;
-        blurX: number;
-        blurY: number;
-        strength: number;
-        quality: number;
-        inner: boolean;
-        knockout: boolean;
         /**
          * @private
          */
@@ -7053,13 +7045,29 @@ declare module egret {
          * @param blurX {number} 水平模糊量。有效值为 0 到 255（浮点）。
          * @param blurY {number} 垂直模糊量。有效值为 0 到 255（浮点）。
          * @param strength {number} 印记或跨页的强度。该值越高，压印的颜色越深，而且发光与背景之间的对比度也越强。有效值为 0 到 255。
-         * @param quality {number} 应用滤镜的次数。
-         * @param inner {boolean} 指定发光是否为内侧发光。值 true 指定发光是内侧发光。值 false 指定发光是外侧发光（对象外缘周围的发光）。暂未实现。
-         * @param knockout {number} 指定对象是否具有挖空效果。值为 true 将使对象的填充变为透明，并显示文档的背景颜色。暂未实现。
+         * @param quality {number} 应用滤镜的次数。暂未实现。
+         * @param inner {boolean} 指定发光是否为内侧发光。值 true 指定发光是内侧发光。值 false 指定发光是外侧发光（对象外缘周围的发光）。
+         * @param knockout {number} 指定对象是否具有挖空效果。值为 true 将使对象的填充变为透明，并显示文档的背景颜色。
          * @version Egret 2.4
          * @platform Web,Native
          */
         constructor(color?: number, alpha?: number, blurX?: number, blurY?: number, strength?: number, quality?: number, inner?: boolean, knockout?: boolean);
+        private $color;
+        color: number;
+        private $alpha;
+        alpha: number;
+        private $blurX;
+        blurX: number;
+        private $blurY;
+        blurY: number;
+        private $strength;
+        strength: number;
+        private $quality;
+        quality: number;
+        private $inner;
+        inner: boolean;
+        private $knockout;
+        knockout: boolean;
     }
 }
 declare module egret {
@@ -7073,8 +7081,6 @@ declare module egret {
      * @platform Web,Native
      */
     class DropShadowFilter extends GlowFilter {
-        distance: number;
-        angle: number;
         /**
          * 初始化 DropShadowFilter 对象
          * @method egret.GlowFilter#constructor
@@ -7084,25 +7090,21 @@ declare module egret {
          * @param alpha {number} 颜色的 Alpha 透明度值。有效值为 0 到 1。例如，0.25 设置透明度值为 25%。
          * @param blurX {number} 水平模糊量。有效值为 0 到 255（浮点）。
          * @param blurY {number} 垂直模糊量。有效值为 0 到 255（浮点）。
-         * @param strength {number} 印记或跨页的强度。该值越高，压印的颜色越深，而且发光与背景之间的对比度也越强。有效值为 0 到 255。暂未实现。
-         * @param quality {number} 应用滤镜的次数。
-         * @param inner {boolean} 指定发光是否为内侧发光。值 true 指定发光是内侧发光。值 false 指定发光是外侧发光（对象外缘周围的发光）。暂未实现。
-         * @param knockout {number} 指定对象是否具有挖空效果。值为 true 将使对象的填充变为透明，并显示文档的背景颜色。暂未实现。
+         * @param strength {number} 印记或跨页的强度。该值越高，压印的颜色越深，而且发光与背景之间的对比度也越强。有效值为 0 到 255。
+         * @param quality {number} 应用滤镜的次数。暂未实现。
+         * @param inner {boolean} 指定发光是否为内侧发光。值 true 指定发光是内侧发光。值 false 指定发光是外侧发光（对象外缘周围的发光）。
+         * @param knockout {number} 指定对象是否具有挖空效果。值为 true 将使对象的填充变为透明，并显示文档的背景颜色。
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(distance?: number, angle?: number, color?: number, alpha?: number, blurX?: number, blurY?: number, strength?: number, quality?: number, inner?: boolean, knockout?: boolean, hideObject?: boolean);
+        constructor(distance?: number, angle?: number, color?: number, alpha?: number, blurX?: number, blurY?: number, strength?: number, quality?: number, inner?: boolean, knockout?: boolean);
+        private $distance;
+        distance: number;
+        private $angle;
+        angle: number;
     }
 }
 declare module egret {
-    /**
-     * @private
-     */
-    var $cos: (angle: number) => number;
-    /**
-     * @private
-     */
-    var $sin: (angle: number) => number;
     /**
      * @language en_US
      * The Matrix class represents a transformation matrix that determines how to map points from one coordinate space to
@@ -8015,7 +8017,6 @@ declare module egret {
          * Play back the video.
          * @param startTime The initial position in seconds at which playback should start, (default = 0)
          * @param loop Defines should play the video again when the video is ended. (default = false)
-         * @param fullscreen Defines should play the video in fullscreen mode. (default = false)
          * @version Egret 2.4
          * @platform Web,Native
          */
@@ -8024,7 +8025,6 @@ declare module egret {
          * 播放该视频
          * @param startTime 应开始播放的初始位置（以秒为单位），默认值是视频上次结束的位置
          * @param loop 是否需要循环播放，默认值是 false
-         * @param fullscreen 是否需要全屏播放，默认值是 false
          * @version Egret 2.4
          * @platform Web,Native
          */
@@ -8946,7 +8946,7 @@ declare module egret.sys {
          * @private
          * 更新对象在舞台上的显示区域和透明度,返回显示区域是否发生改变。
          */
-        $update(): boolean;
+        $update(dirtyRegionPolicy: string): boolean;
         /**
          * @private
          */
@@ -9036,6 +9036,7 @@ declare module egret {
      */
     function runEgret(options?: {
         renderMode?: string;
+        audioType?: number;
         screenAdapter?: sys.IScreenAdapter;
     }): void;
     /**
@@ -9460,7 +9461,7 @@ declare module egret.sys {
          * 更新对象在舞台上的显示区域和透明度,返回显示区域是否发生改变。
          * 注意：此方法必须在$getRenderNode()被调用之后执行。
          */
-        $update(): boolean;
+        $update(dirtyRegionPolicy: string, bounds?: Rectangle): boolean;
     }
 }
 declare module egret.sys {
@@ -11177,6 +11178,10 @@ declare module egret {
          * @platform Web,Native
          */
         getTexture(name: string): Texture;
+        /**
+         * @private
+         */
+        getConfig(name: string, key: string): number;
         /**
          * @private
          */
@@ -12907,7 +12912,7 @@ declare module egret {
          * 不能重写$invalidateContentBounds，因为内部graphics调用clear时会触发$invalidateContentBounds这狗方法，从而导致死循环。
          */
         $invalidateTextField(): void;
-        $update(bounds?: Rectangle): boolean;
+        $update(dirtyRegionPolicy: string, bounds?: Rectangle): boolean;
         $getRenderBounds(): Rectangle;
         /**
          * @private

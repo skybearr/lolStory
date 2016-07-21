@@ -11,8 +11,6 @@ class MissionListUI extends BaseSecondUI{
 
     private mission_arr: MissionItemUI[];
     private vo: MissionListVO;
-    /**当前最新关卡*/
-    private newest_mission_id: number;
     /**当前点击的小关卡*/
     private click_mission_item: MissionItemUI;
     /**当前最新的小关卡*/
@@ -20,17 +18,15 @@ class MissionListUI extends BaseSecondUI{
     private finger: eui.Image;
 
     /**设置关卡
-	 * @param mission_id 当前点击的关卡id 1开始*/
-    public constructor(mission_id: number) {
+	 * @param v MissionListVO*/
+    public constructor(v: MissionListVO) {
         super();
-        this.vo = StoryLogic.getInstance().getMissionListVOByID(mission_id);
+        this.vo = v;
         this.skinName = "MissionListSkin";
         this.once(egret.Event.ADDED_TO_STAGE,this.onStage,this);
     }
 
     private onStage(e: egret.Event): void {
-        this.newest_mission_id = StoryLogic.getInstance().current_missionID;
-
         RES.getResAsync(this.vo.bg,this.loadBg,this);
         
         this.mission_list_con = new eui.Group();
@@ -92,28 +88,21 @@ class MissionListUI extends BaseSecondUI{
 
     /**获取小关卡的状态  i 小关卡的索引 0-14*/
     private getState(i: number): number {
-        return 1;
-        if(this.charter_id < StoryLogic.getInstance().current_chapterID)//以前的章节
+        if(this.vo.chapter_id < StoryLogic.getInstance().current_chapterID)//以前的章节
         {
             return StoryLogic.MISSION_ITEM_STATE_FINISH;
         }
-        else {
-            var index: number = Math.floor((this.newest_mission_id - 1) / StoryLogic.MISSION_LIST_NUM);//当前的大关卡
-            if(this.mission_index < index) {
+        else if(this.vo.id < StoryLogic.getInstance().current_missionListID)//以前的大关卡
+        {
+            return StoryLogic.MISSION_ITEM_STATE_FINISH;
+        }
+        else{
+            if(i+1 < StoryLogic.getInstance().current_missionID) {
                 return StoryLogic.MISSION_ITEM_STATE_FINISH;
             }
-            else if(this.mission_index == index)//当前大关卡
+            else if(i+1 == StoryLogic.getInstance().current_missionID)//当前大关卡
             {
-                if(i < (this.newest_mission_id - 1) % 15) {
-                    return StoryLogic.MISSION_ITEM_STATE_FINISH;
-                }
-                else if(i == (this.newest_mission_id - 1) % 15) {
-                    return StoryLogic.MISSION_ITEM_STATE_WANTED;
-                }
-                else {
-                    return StoryLogic.MISSION_ITEM_STATE_LOCK;
-                }
-
+                return StoryLogic.MISSION_ITEM_STATE_WANTED;
             }
             else {
                 return StoryLogic.MISSION_ITEM_STATE_LOCK;
@@ -124,18 +113,14 @@ class MissionListUI extends BaseSecondUI{
 
     private initEvent(): void {
         this.back_btn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.clickBack,this);
-//        StoryLogic.getInstance().addEventListener(MyUIEvent.UPDATE_MISSION_ITEM,this.updateMissionItemUI,this);
+        StoryLogic.getInstance().addEventListener(MyUIEvent.UPDATE_MISSION_ITEM,this.updateMissionItemUI,this);
         this.once(egret.Event.REMOVED_FROM_STAGE,this.clear,this);
     }
 
     private updateMissionItemUI(e: MyUIEvent): void {
-        if(this.click_mission_item != null) {
-//            this.click_mission_item.changeState(StoryLogic.MISSION_ITEM_STATE_WANTED,3);
+        if(this.current_mission_item != null && e.data.id == this.current_mission_item.vo.id) {
+            this.current_mission_item.changeState(StoryLogic.MISSION_ITEM_STATE_FINISH,3);
         }
-        //	    if(this.current_mission_item != null && e.data.id == this.current_mission_item.mission_id)
-        //        {
-        //            this.current_mission_item.changeState(StoryLogic.MISSION_ITEM_STATE_FINISH,0);
-        //        }
     }
 
     private clickBack(e: TouchEvent): void {
@@ -148,29 +133,20 @@ class MissionListUI extends BaseSecondUI{
     private clickItem(e: egret.TouchEvent): void {
         SoundManager.getInstance().playEffectSound();
 
-        this.click_mission_item = e.currentTarget as MissionItemUI;
-
-        var n: number = parseInt(e.currentTarget.name);
-
-//        if((e.currentTarget as MissionItemUI).state == StoryLogic.MISSION_ITEM_STATE_LOCK) {
-//            console.log("点击第" + this.charter_id + "章节 第" + (this.mission_index + 1) + "关卡 第" + n + "小关此关卡还没开通");
-//        }
-//        else {
-//            console.log("点击第" + this.charter_id + "章节 第" + (this.mission_index + 1) + "关卡 第" + n + "小关");
-//            UIManager.getInstance().startFight(this.charter_id * 100 + n);
-//        }
+        if((e.currentTarget as MissionItemUI).state != StoryLogic.MISSION_ITEM_STATE_LOCK) {
+            this.click_mission_item = e.currentTarget as MissionItemUI;
+            FightLogic.getInstance().startFightInStory(this.click_mission_item.vo);
+        }
     }
 
     private clear(e: egret.Event): void {
         this.removeChildren();
         this.back_btn.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.clickBack,this);
-//        StoryLogic.getInstance().removeEventListener(MyUIEvent.UPDATE_MISSION_ITEM,this.updateMissionItemUI,this);
-//        for(var i: number;i < this.mission_arr.length;i++) {
-//            this.mission_arr[i].removeEventListener(egret.TouchEvent.TOUCH_TAP,this.clickItem,this);
-//        }
-//        this.back_btn = null;
-//        this.mission_id_img = null;
-//        this.title_bg = null;
-//        this.mission_arr = null;
+        StoryLogic.getInstance().removeEventListener(MyUIEvent.UPDATE_MISSION_ITEM,this.updateMissionItemUI,this);
+        for(var i: number;i < this.mission_arr.length;i++) {
+            this.mission_arr[i].removeEventListener(egret.TouchEvent.TOUCH_TAP,this.clickItem,this);
+        }
+        this.back_btn = null;
+        this.mission_arr = null;
     }
 }

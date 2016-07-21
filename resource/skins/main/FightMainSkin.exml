@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="FightMainSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707" locked="true"/>
+	<e:Group id="bg" height="960" width="640" x="0" y="0" locked="true"/>
+	<e:Label id="title" text="地点" width="329" verticalAlign="middle" textAlign="center" horizontalCenter="0.5" y="30" textColor="0xE7C028" bold="true" fontFamily="Microsoft New Tai Lue"/>
+	<e:Image source="MasterYi_Square_0_png" x="100" y="177" width="80" height="80"/>
+	<e:Image source="Sona_Square_0_png" x="419" y="178" width="80" height="80"/>
+	<e:Rect height="20" width="171" x="51" y="301" fillColor="0x0E9F37"/>
+	<e:Rect width="171" y="298" height="20" fillColor="0x0E9F37" x="396"/>
+
+</e:Skin>
