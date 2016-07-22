@@ -78,6 +78,9 @@ class StoryLogic extends egret.EventDispatcher{
             vv.name = o['name'];
             vv.icon = o['icon'];
             vv.avg_id = o['avg_id'];
+            if(o['avg_over_id'] != null){
+                vv.avg_over_id = o['avg_over_id'];
+            }
             vv.monster_ids = o['monster_ids'].split(",");
             this.mission_data_arr.push(vv);
         }

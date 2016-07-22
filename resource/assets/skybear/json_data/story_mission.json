@@ -5,7 +5,8 @@
 		"name": "我是第一章",
 		"icon":"Sona_Square_0_png",
 		"monster_ids":"1",
-		"avg_id":1
+		"avg_id":1,
+		"avg_over_id":2
 	},
 	{
 		"id": 2,

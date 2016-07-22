@@ -16,9 +16,12 @@ class AvgMainUI extends eui.Component{
     private current_dialog_index:number;
     private current_dialog:AvgDialogVO;
     private words_index:number;
+    /**类型 0开始的  1结束时的*/
+    private avg_type:number;
     
-	public constructor(id:number) {
+	public constructor(id:number,type:number) {
     	super();
+    	this.avg_type = type;
     	this.vo = AVGLogic.getInstance().getAVGVOByID(id);
         this.skinName = "AvgMainSkin";
 	}
@@ -110,7 +113,9 @@ class AvgMainUI extends eui.Component{
     	  if(this.parent != null){
     	      this.parent.removeChild(this);
     	      this.clear();
-    	      FightLogic.getInstance().startFightReal();
+              if(this.avg_type == AVGLogic.BEGIN_AVG) {
+                  FightLogic.getInstance().startFightReal();
+              }
     	  }
 	}
 	

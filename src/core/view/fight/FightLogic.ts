@@ -29,6 +29,10 @@ class FightLogic extends egret.EventDispatcher {
         var keys: string[] = [];
         if(StoryLogic.getInstance().needAvg(vo.mission_id)) {
             keys = keys.concat(StoryLogic.getInstance().getSourceKeysByID(vo.avg_id));
+            if(vo.avg_over_id != 0)
+            {
+                keys = keys.concat(StoryLogic.getInstance().getSourceKeysByID(vo.avg_over_id));
+            }
         }
         keys = keys.concat(this.getSourceKeysByID(vo.monster_ids));
         LoadManager.getInstance().addEventListener(MyUIEvent.LOAD_FIGHT_AND_AVG_SOURCE,this.loadSourceComplete,this);
@@ -40,7 +44,7 @@ class FightLogic extends egret.EventDispatcher {
         if(this.current_mission_vo != null)
         {
             if(StoryLogic.getInstance().needAvg(this.current_mission_vo.mission_id)) {
-                AVGLogic.getInstance().startAVG(this.current_mission_vo.avg_id);
+                AVGLogic.getInstance().startAVG(this.current_mission_vo.avg_id,AVGLogic.BEGIN_AVG);
             }
             else {
                 this.startFightReal();
@@ -51,6 +55,14 @@ class FightLogic extends egret.EventDispatcher {
     public startFightReal():void
     {
         UIManager.getInstance().storyCon.addChild(new FightMainUI());
+    }
+    
+    public fightOver():void
+    {
+        UIManager.getInstance().storyCon.removeChildren();
+        if(this.current_mission_vo != null && this.current_mission_vo.avg_over_id != 0){
+            AVGLogic.getInstance().startAVG(this.current_mission_vo.avg_over_id,AVGLogic.OVER_AVG);
+        }
     }
     
     private getSourceKeysByID(ids:string[]):string[]

@@ -13,5 +13,6 @@ class MissionVO {
 	public icon:string;
 	public monster_ids:string[];
 	public avg_id:number;
+	public avg_over_id:number = 0;
 	
 }

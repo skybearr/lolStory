@@ -15,11 +15,15 @@ class AVGLogic {
         return this.instance;
     }
     
+    public static BEGIN_AVG:number = 0;
+    public static OVER_AVG:number = 1;
+    
     private avg_data_arr:AvgVO[];
     
+    
     /**开始剧情*/
-    public startAVG(id: number): void {
-        UIManager.getInstance().storyCon.addChild(new AvgMainUI(id));
+    public startAVG(id: number,type:number): void {
+        UIManager.getInstance().storyCon.addChild(new AvgMainUI(id,type));
     }
     
     public getAVGVOByID(id:number):AvgVO
