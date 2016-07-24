@@ -3,9 +3,7 @@
 	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707" locked="true"/>
 	<e:Group id="bg" height="960" width="640" x="0" y="0" locked="true"/>
 	<e:Label id="title" text="地点" width="329" verticalAlign="middle" textAlign="center" horizontalCenter="0.5" y="30" textColor="0xE7C028" bold="true" fontFamily="Microsoft New Tai Lue"/>
-	<e:Image source="MasterYi_Square_0_png" x="132" y="155" width="80" height="80"/>
-	<e:Image source="Sona_Square_0_png" x="422" y="158" width="80" height="80"/>
-	<e:Rect height="20" width="220" x="32" y="297" fillColor="0x0E9F37"/>
-	<e:Rect width="171" y="298" height="20" fillColor="0x0E9F37" x="396"/>
+	<e:Image source="MasterYi_Square_0_png" x="118" y="19" width="80" height="80"/>
+	<e:Image source="Sona_Square_0_png" x="467" y="20" width="80" height="80"/>
 
 </e:Skin>

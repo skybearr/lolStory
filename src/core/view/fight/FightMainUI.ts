@@ -8,22 +8,23 @@ class FightMainUI extends eui.Component{
     	super();
         this.skinName = "FightMainSkin";
 	}
-	
-    protected childrenCreated():void
+
+	protected childrenCreated():void
 	{
 	    super.childrenCreated();
-	    
+        
 	    this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.click,this);
 	}
 	
+	
 	private fightOver():void
 	{
-	    FightLogic.getInstance().fightOver();
+        FightLogic.getInstance().fightOver();
 	}
 	
 	private click():void
 	{
-	    this.fightOver();
+        this.fightOver();
 	}
 	
 	private clear():void

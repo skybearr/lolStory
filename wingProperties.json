@@ -213,6 +213,36 @@
 					"isFolder":false,
 					"key":"MasterYi_Square_0_png",
 					"name":"MasterYi_Square_0_png"
+				},
+				{
+					"isFolder":false,
+					"key":"hp_bar1_png",
+					"name":"hp_bar1_png"
+				},
+				{
+					"isFolder":false,
+					"key":"hp_bar2_png",
+					"name":"hp_bar2_png"
+				},
+				{
+					"isFolder":false,
+					"key":"hp_bar3_png",
+					"name":"hp_bar3_png"
+				},
+				{
+					"isFolder":false,
+					"key":"hp_bar4_png",
+					"name":"hp_bar4_png"
+				},
+				{
+					"isFolder":false,
+					"key":"hp_bar5_png",
+					"name":"hp_bar5_png"
+				},
+				{
+					"isFolder":false,
+					"key":"hp_bar0_png",
+					"name":"hp_bar0_png"
 				}
 			]
 		}
