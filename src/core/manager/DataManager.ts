@@ -22,6 +22,7 @@ class DataManager extends egret.EventDispatcher {
     {
         this.string_data_arr = RES.getRes("String_json");
         StoryLogic.getInstance().initData();
+        FightLogic.getInstance().initData();
         AVGLogic.getInstance().iniData();
     }
     

@@ -12,7 +12,7 @@ class MonsterVO {
     public image: string = "Sona_Square_0_png";
     public profession_type: number = 1;
     public star: number = 3;
-    public drop: string = "200; 20; 1:25; 2:25; 3:25; 4:25";
+    public drop: string = "200;20;1:20;2:25;3:25;4:25";
     public hp: number = 100;
     public mana: number = 100;
     public ad: number = 5;

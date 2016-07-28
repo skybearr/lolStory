@@ -1,5 +1,5 @@
 {
-	"close":false,
+	"close":true,
 	"natures":["egretProject"],
 	"resourcePlugin":{
 		"configs":[{
@@ -243,6 +243,16 @@
 					"isFolder":false,
 					"key":"hp_bar0_png",
 					"name":"hp_bar0_png"
+				},
+				{
+					"isFolder":false,
+					"key":"hp_bar6_png",
+					"name":"hp_bar6_png"
+				},
+				{
+					"isFolder":false,
+					"key":"propeties_bar_png",
+					"name":"propeties_bar_png"
 				}
 			]
 		}

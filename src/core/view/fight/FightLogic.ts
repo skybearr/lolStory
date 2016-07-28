@@ -18,6 +18,21 @@ class FightLogic extends egret.EventDispatcher {
 
     
     private current_mission_vo:MissionVO;
+    private monster_data_arr:MonsterVO[];
+    
+    /**初始化配置里的数据*/
+    public initData(): void
+    {
+        this.monster_data_arr = [];
+        var arr = RES.getRes("monster_list_json");
+        for(var i: number = 0;i < arr.length;i++) {
+            var vo: MonsterVO = new MonsterVO();
+            var o: Object = arr[i];
+            vo.id = o['id'];
+            vo.name = o['name'];
+            this.monster_data_arr.push(vo);
+        }
+    }
     
     /**开始战斗流程，第一步，判断是否需要显示剧情*/
     public startFightInStory(vo: MissionVO): void {

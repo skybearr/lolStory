@@ -6,6 +6,7 @@
 class FightHpBarItem extends eui.Group{
     private img:eui.Image;
     
+    private max_width: number = 40;
     private index:number;
 	public constructor(index:number) {
     	super();
@@ -16,7 +17,7 @@ class FightHpBarItem extends eui.Group{
 	{
 	    super.childrenCreated();
 	    
-	    var type:number = Math.floor(this.index / 40) + 1;
+        var type: number = Math.floor(this.index / this.max_width) + 1;
         this.img = new eui.Image(RES.getRes("hp_bar" + type + "_png"));
         this.addChild(this.img);
 	}
