@@ -38,7 +38,6 @@ class FightLogic extends egret.EventDispatcher {
     public startFightInStory(vo: MissionVO): void {
         //判断是否需要播放剧情
         this.current_mission_vo = vo;
-        this.once(MyUIEvent.LOAD_FIGHT_AND_AVG_SOURCE,this.loadSourceComplete,this);
         //组装需要加载的资源
         var groupname: string = "fight_source" + vo.mission_id;
         var keys: string[] = [];
@@ -56,6 +55,7 @@ class FightLogic extends egret.EventDispatcher {
 
     private loadSourceComplete(e:MyUIEvent):void
     {
+        LoadManager.getInstance().removeEventListener(MyUIEvent.LOAD_FIGHT_AND_AVG_SOURCE, this.loadSourceComplete, this);
         if(this.current_mission_vo != null)
         {
             if(StoryLogic.getInstance().needAvg(this.current_mission_vo.mission_id)) {

@@ -5,5 +5,8 @@
 	<e:Label id="title" text="地点" width="329" verticalAlign="middle" textAlign="center" horizontalCenter="0.5" y="30" textColor="0xE7C028" bold="true" fontFamily="Microsoft New Tai Lue"/>
 	<e:Image source="MasterYi_Square_0_png" x="118" y="19" width="80" height="80"/>
 	<e:Image source="Sona_Square_0_png" x="467" y="20" width="80" height="80"/>
+	<e:Rect height="320" width="610" y="631" fillColor="0x4742AA" horizontalCenter="0" locked="true"/>
+	<e:Image source="naviIcon_png" x="30" y="640" width="288" height="300" scale9Grid="5,6,19,19" locked="true"/>
+	<e:Image source="naviIcon_png" y="640" scale9Grid="5,6,19,19" width="288" height="300" x="322" locked="true"/>
 
 </e:Skin>

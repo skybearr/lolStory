@@ -3,7 +3,8 @@
  * @author 
  *
  */
-class MissionItemUI extends eui.Group {
+class MissionItemUI extends eui.Group
+{
     private bg: eui.Image;
     private star: eui.Group;
     private lock: eui.Image;
@@ -13,27 +14,28 @@ class MissionItemUI extends eui.Group {
     public height_set: number = 140;
     private bg_height: number = 100;
     public state: number;
-    public vo:MissionVO;
+    public vo: MissionVO;
 
     /**
      * @param id 显示的关卡数字
      * @param star 星数 如果锁定状态，则不显示，待打状态为0星
      * @param state 状态  0锁定 1代打 2通关*/
-    public constructor(v:MissionVO,star: number,state: number) {
+    public constructor(v: MissionVO, star: number, state: number)
+    {
         super();
         this.vo = v;
-        
+
         this.loadNoneBg();
         this.star = new eui.Group();
         this.star.horizontalCenter = 0;
         this.star.top = this.height_set - 40;
         this.addChild(this.star);
 
-        this.changeState(state,star);
-        RES.getResAsync(this.vo.icon,this.loadBg,this);
+        this.changeState(state, star);
+        RES.getResAsync(this.vo.icon, this.loadBg, this);
     }
-    
-    private loadNoneBg():void
+
+    private loadNoneBg(): void
     {
         var img = new eui.Image(RES.getRes("missionitem_none_bg_png"));
         img.smoothing = true;
@@ -41,27 +43,30 @@ class MissionItemUI extends eui.Group {
         img.height = this.height_set - 40;
         this.addChild(img);
     }
-    
-    private loadBg(data,key):void
+
+    private loadBg(data, key): void
     {
         this.bg = new eui.Image(data);
         this.bg.smoothing = true;
         this.bg.width = this.width_set;
         this.bg.height = this.height_set - 40;
-        this.addChildAt(this.bg,1);
+        this.addChildAt(this.bg, 1);
         this.bg.visible = this.state != StoryLogic.MISSION_ITEM_STATE_LOCK;
     }
 
-    public changeState(s: number,star_num: number): void {
+    public changeState(s: number, star_num: number): void
+    {
         this.state = s;
-        if(s == StoryLogic.MISSION_ITEM_STATE_LOCK) {//只有一个锁
+        if(s == StoryLogic.MISSION_ITEM_STATE_LOCK)
+        {//只有一个锁
             var t1: egret.Texture = RES.getRes("main_03_png");
             this.lock = new eui.Image(t1);
             this.lock.x = (this.width_set - t1.textureWidth) / 2;
             this.lock.y = (this.bg_height - t1.textureHeight) / 2;
             this.addChild(this.lock);
         }
-        else if(s == StoryLogic.MISSION_ITEM_STATE_WANTED) {//当前关卡  星级为0
+        else if(s == StoryLogic.MISSION_ITEM_STATE_WANTED)
+        {//当前关卡  星级为0
             this.addNumImage();
             this.changeStar(2);
             if(this.bg != null)
@@ -76,8 +81,10 @@ class MissionItemUI extends eui.Group {
         }
     }
 
-    private addNumImage(): void {
-        if(this.mission_name == null) {
+    private addNumImage(): void
+    {
+        if(this.mission_name == null)
+        {
             this.mission_name = new eui.Label();
             this.mission_name.size = 20;
             this.mission_name.text = this.vo.name;
@@ -87,9 +94,11 @@ class MissionItemUI extends eui.Group {
         }
     }
 
-    public changeStar(n: number): void {
+    public changeStar(n: number): void
+    {
         this.star.removeChildren();
-        for(var i: number = 0;i < 3;i++) {
+        for(var i: number = 0;i < 3;i++)
+        {
             var t: egret.Texture = RES.getRes(i < n ? "star_a_png" : "star_b_png");
             var s: eui.Image = new eui.Image(t);
             s.width = s.height = 40;
@@ -98,7 +107,8 @@ class MissionItemUI extends eui.Group {
         }
     }
 
-    public clear(): void {
+    public clear(): void
+    {
         this.star.removeChildren();
         this.bg = null;
         this.star = null;
