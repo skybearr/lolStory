@@ -12,6 +12,10 @@ declare class AvgMainSkin extends eui.Skin{
 }
 declare class FightMainSkin extends eui.Skin{
 }
+declare class FightPlayerPropSkin extends eui.Skin{
+}
+declare class FightPropBarSkin extends eui.Skin{
+}
 declare class MissionListSkin extends eui.Skin{
 }
 declare class RoleInfoSkin extends eui.Skin{

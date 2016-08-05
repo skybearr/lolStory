@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="FightPropBarSkin" width="240" height="10" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Image id="bg" source="propetie_bar_png" right="0" verticalCenter="0"/>
+	<e:Label id="txt" text="ATK" size="10" fontFamily="微软雅黑" width="21" verticalAlign="middle" textAlign="left" textColor="0xDEE3F0" verticalCenter="0" bold="true"/>
+	<e:Rect id="bar" height="8" width="120" x="25" y="1" fillColor="0x009900"/>
+</e:Skin>

@@ -8,6 +8,7 @@ class MissionVO {
 	}
 	
 	public id:number;
+	public bg:string;
 	public mission_id:number;
 	public name:string;
 	public icon:string;

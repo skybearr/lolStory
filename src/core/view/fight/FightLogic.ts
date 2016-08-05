@@ -34,6 +34,12 @@ class FightLogic extends egret.EventDispatcher {
         }
     }
     
+    /**根据类型获取这个属性的最大值设定*/
+    public getMaxPropValueByType(t:number):number
+    {
+        return 100;
+    }
+    
     /**开始战斗流程，第一步，判断是否需要显示剧情*/
     public startFightInStory(vo: MissionVO): void {
         //判断是否需要播放剧情
@@ -69,7 +75,9 @@ class FightLogic extends egret.EventDispatcher {
     
     public startFightReal():void
     {
-        UIManager.getInstance().storyCon.addChild(new FightMainUI());
+        var vo:FightVO = new FightVO();
+        vo.bg = this.current_mission_vo.bg;
+        UIManager.getInstance().storyCon.addChild(new FightMainUI(vo));
     }
     
     public fightOver():void

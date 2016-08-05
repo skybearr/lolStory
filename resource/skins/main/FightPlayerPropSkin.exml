@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="FightPlayerPropSkin" width="290" height="300" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Image source="naviIcon_png" width="288" height="300" scale9Grid="5,6,19,19" horizontalCenter="0" verticalCenter="0"/>
+	<e:Rect height="2" width="288" y="98" fillColor="0xFFFFFF" horizontalCenter="0"/>
+	<e:Label id="name_txt" text="名字" x="18" y="24" width="155" size="20" fontFamily="微软雅黑" textColor="0x24F109"/>
+	<e:Label id="pro_txt" y="63" text="职业" fontFamily="微软雅黑" width="132" size="20" x="18" textColor="0x24F109"/>
+	<e:Label id="weapon_txt" y="63" text="当前武器" fontFamily="微软雅黑" width="129" size="20" x="150" textColor="0x24F109"/>
+	<e:Label id="lv_txt" y="24" text="Lv.20" fontFamily="微软雅黑" width="64" size="20" x="206" height="20" textColor="0x24F109"/>
+</e:Skin>

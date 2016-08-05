@@ -39,6 +39,7 @@ class MissionListUI extends BaseSecondUI{
             var star: number = i % 4;
             var state: number = this.getState(i);
             var v:MissionVO = StoryLogic.getInstance().getMissionVOByID(parseInt(this.vo.mission_ids[i]));
+            v.bg = this.vo.bg;
             var item: MissionItemUI = new MissionItemUI(v,star,state);
             item.name = i.toString();
             item.x = (item.width_set + 60) * (i % 3);
@@ -56,8 +57,8 @@ class MissionListUI extends BaseSecondUI{
         }
         this.initEvent();
     }
-    
-    private loadBg(data,key):void
+
+    private loadBg(data, key): void
     {
         var img = new eui.Image(data);
         img.smoothing = true;
@@ -65,6 +66,17 @@ class MissionListUI extends BaseSecondUI{
         img.height = GlobalData.GameStage_height;
         img.alpha = 0.8;
         this.bg.addChild(img);
+    }
+
+    private clickItem(e: egret.TouchEvent): void
+    {
+        SoundManager.getInstance().playEffectSound();
+
+        if((e.currentTarget as MissionItemUI).state != StoryLogic.MISSION_ITEM_STATE_LOCK)
+        {
+            this.click_mission_item = e.currentTarget as MissionItemUI;
+            FightLogic.getInstance().startFightInStory(this.click_mission_item.vo);
+        }
     }
 
     private addCurrentHand(): void {
@@ -127,15 +139,6 @@ class MissionListUI extends BaseSecondUI{
         SoundManager.getInstance().playEffectSound();
         if(this.parent != null) {
             this.parent.removeChild(this);
-        }
-    }
-
-    private clickItem(e: egret.TouchEvent): void {
-        SoundManager.getInstance().playEffectSound();
-
-        if((e.currentTarget as MissionItemUI).state != StoryLogic.MISSION_ITEM_STATE_LOCK) {
-            this.click_mission_item = e.currentTarget as MissionItemUI;
-            FightLogic.getInstance().startFightInStory(this.click_mission_item.vo);
         }
     }
 
