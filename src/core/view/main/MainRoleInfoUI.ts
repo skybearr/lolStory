@@ -3,10 +3,10 @@
  * @author 
  *
  */
-class RoleInfoUI extends eui.Component{
+class MainRoleInfoUI extends eui.Component{
 	public constructor() {
     	super();
-        this.skinName = "RoleInfoSkin";
+        this.skinName = "MainRoleInfoSkin";
 	}
 	
     protected childrenCreated(){

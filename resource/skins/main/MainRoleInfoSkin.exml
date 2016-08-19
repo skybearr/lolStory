@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<e:Skin class="RoleInfoSkin" width="458" height="64" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="MainRoleInfoSkin" width="458" height="64" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Rect height="64" width="64" verticalCenter="0" fillColor="0xF5AA6D" locked="true"/>
 	<e:Rect verticalCenter="-16" width="192" height="32" x="64" y="10" fillColor="0x9CE4EF" locked="true"/>
 	<e:Rect width="202" height="32" x="256" fillColor="0xE76FEC" y="0" locked="true"/>

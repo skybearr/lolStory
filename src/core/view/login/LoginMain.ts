@@ -21,7 +21,7 @@ class LoginMain extends BaseFirstUI {
 
     protected createChildren() {
         super.createChildren();
-        this.btn = new BaseButton("startgame_png");
+        this.btn = new BaseButton("startgame_png","startgame_png");
         this.btn.horizontalCenter = 0;
         this.btn.y = this.server_name.y + 80;
         this.addChild(this.btn);

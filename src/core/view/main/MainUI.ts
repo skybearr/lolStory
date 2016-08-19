@@ -4,7 +4,7 @@
  *
  */
 class MainUI extends BaseFirstUI {
-    private role:RoleInfoUI;
+    private role:MainRoleInfoUI;
     private map:MainMapBg;
     private buttons:MainButtons;
 	public constructor() {
@@ -26,7 +26,7 @@ class MainUI extends BaseFirstUI {
 	}
 	
 	private initRoleInfo(){
-    	  this.role = new RoleInfoUI();
+        this.role = new MainRoleInfoUI();
 	    this.addChild(this.role);
 	}
 	
