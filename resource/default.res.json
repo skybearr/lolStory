@@ -13,7 +13,7 @@
 			"name":"login"
 		},
 		{
-			"keys":"String_json,b1_png,b2_png,b3_png,b4_png,b5_png,b6_png,btnbg_png,main_03_png,map_1_png,map_2_png,map_3_png,map_4_png,finger_png,monster_list_json,story_mission_list_json,story_chapter_json,story_mission_json,star_a_png,star_b_png,missionitem_none_bg_png,avg_list_json,hp_bar1_png,hp_bar2_png,hp_bar3_png,hp_bar4_png,hp_bar5_png,hp_bar0_png,hp_bar6_png,propeties_bar_png,naviIcon_png,hero_list_json,skill_list_json,propetie_bar_png",
+			"keys":"String_json,b1_png,b2_png,b3_png,b4_png,b5_png,b6_png,btnbg_png,main_03_png,map_1_png,map_2_png,map_3_png,map_4_png,finger_png,monster_list_json,story_mission_list_json,story_chapter_json,story_mission_json,star_a_png,star_b_png,missionitem_none_bg_png,avg_list_json,hp_bar1_png,hp_bar2_png,hp_bar3_png,hp_bar4_png,hp_bar5_png,hp_bar0_png,hp_bar6_png,propeties_bar_png,hero_list_json,skill_list_json,propetie_bar_png,public_src_json",
 			"name":"game"
 		}
 	],
@@ -294,11 +294,6 @@
 			"url":"assets/skybear/public/propeties_bar.png"
 		},
 		{
-			"name":"naviIcon_png",
-			"type":"image",
-			"url":"assets/skybear/game_ui/public/naviIcon.png"
-		},
-		{
 			"name":"hero_list_json",
 			"type":"json",
 			"url":"assets/skybear/json_data/hero_list.json"
@@ -312,6 +307,17 @@
 			"name":"propetie_bar_png",
 			"type":"image",
 			"url":"assets/skybear/game_ui/fight/propetie_bar.png"
+		},
+		{
+			"name":"public_src_json",
+			"subkeys":"arrow_0,arrow_1,item_bg_0,item_bg_1,item_bg_2,item_bg_3,item_bg_4,item_bg_5,item_qua_0,item_qua_1,item_qua_2,item_qua_3,item_qua_4,item_qua_5,public_1,public_10,public_11,public_12,public_13,public_14,public_15,public_16,public_17,public_18,public_19,public_2,public_20,public_21,public_3,public_4,public_5,public_6,public_7,public_8,public_9,star_0,star_1,star_10,star_2,star_20,star_3,star_30",
+			"type":"sheet",
+			"url":"assets/skybear/game_ui/public/public_src.json"
+		},
+		{
+			"name":"world_jpg",
+			"type":"image",
+			"url":"assets/skybear/game_ui/map/world.jpg"
 		}
 	]
 }

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="BaseButtonSkin" width="66" height="66" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Image id="bg" source="b4_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Label id="txt" text="关闭" verticalAlign="middle" textAlign="center" size="26" horizontalCenter="0" verticalCenter="0" fontFamily="微软雅黑"/>
+</e:Skin>

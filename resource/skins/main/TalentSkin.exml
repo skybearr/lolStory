@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="TalentSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707" locked="true"/>
+	<e:Group id="bg" height="960" width="640" x="0" y="0" locked="true"/>
+	<e:Label id="title" text="天赋" width="329" verticalAlign="middle" textAlign="center" horizontalCenter="0.5" y="30" textColor="0xE7C028" bold="true" fontFamily="Microsoft New Tai Lue"/>
+	<e:Rect height="320" width="610" y="631" fillColor="0x4742AA" horizontalCenter="0" locked="true"/>
+
+</e:Skin>

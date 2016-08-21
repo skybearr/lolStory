@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="RolePropetySkin" width="280" height="400" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Rect height="400" width="280" x="0" y="0" fillColor="0x72580A"/>
+	<e:Label text="无极剑圣 易大师" x="8" y="16" size="16" width="120" height="19"/>
+	<e:Label y="42" size="16" text="星级" width="34" height="19" x="7"/>
+	<e:Label y="42" size="16" text="战斗力" width="54" height="19" x="140"/>
+	<e:Label y="42" size="16" text="13553" width="73" height="19" x="206"/>
+	<e:Image source="star_2" x="43" y="40"/>
+	<e:Image source="star_2" y="39" x="58"/>
+	<e:Image source="star_2" y="40" x="74"/>
+	<e:Image source="star_2" y="40" x="92"/>
+	<e:Image source="star_2" y="40" x="112"/>
+
+</e:Skin>

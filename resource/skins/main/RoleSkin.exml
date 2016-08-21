@@ -1,8 +1,32 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="RoleSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
-	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707" locked="true"/>
-	<e:Group id="bg" height="960" width="640" x="0" y="0" locked="true"/>
+	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707"/>
 	<e:Label id="title" text="角色属性" width="329" verticalAlign="middle" textAlign="center" horizontalCenter="0.5" y="30" textColor="0xE7C028" bold="true" fontFamily="Microsoft New Tai Lue"/>
-	<e:Rect height="320" width="610" y="631" fillColor="0x4742AA" horizontalCenter="0" locked="true"/>
+	<e:Image source="Soraka_2_jpg" x="145" y="108" scaleX="0.5" scaleY="0.5"/>
+	<e:Image source="Soraka_2_jpg" y="114" scaleY="0.5" x="189" scaleX="0.5"/>
+	<e:Image source="Soraka_2_jpg" y="106" scaleY="0.5" scaleX="0.5" x="235"/>
+	<e:Image source="Soraka_2_jpg" y="112" scaleY="0.5" scaleX="0.5" x="395"/>
+	<e:Image source="Soraka_2_jpg" y="104" scaleY="0.5" x="305" scaleX="0.5"/>
+	<e:Component x="328" y="543" skinName="RolePropetySkin" />
+	<e:Component skinName="RolePropetySkin" y="539" x="24"/>
+	<e:Image source="Sona_Square_0_png" x="17" y="128" scaleX="0.5" scaleY="0.5"/>
+	<e:Image source="Sona_Square_0_png" y="207" scaleY="0.5" x="19" scaleX="0.5"/>
+	<e:Image source="Sona_Square_0_png" y="278" scaleY="0.5" scaleX="0.5" x="19"/>
+	<e:Image source="Sona_Square_0_png" y="352" scaleY="0.5" x="21" scaleX="0.5"/>
+	<e:Image source="Sona_Square_0_png" y="417" scaleY="0.5" scaleX="0.5" x="20"/>
+	<e:Image source="item_bg_0" x="117" y="402"/>
+	<e:Image source="item_bg_0" y="403" x="176"/>
+	<e:Image source="item_bg_0" y="403" x="234"/>
+	<e:Image source="item_bg_0" y="422" x="374"/>
+	<e:Image source="item_bg_0" y="428" x="286"/>
+	<e:Image source="item_bg_0" y="423" x="422"/>
+	<e:Image source="item_bg_0" y="461" x="236"/>
+	<e:Image source="item_bg_0" y="461" x="116"/>
+	<e:Image source="item_bg_0" y="463" x="176"/>
+	<e:Image source="item_bg_0" y="423" x="467"/>
+	<e:Image source="item_bg_0" y="424" x="513"/>
+	<e:Image source="item_bg_0" y="423" x="559"/>
+	<e:Image source="arrow_0" x="92" y="227"/>
+	<e:Image source="arrow_0" x="614" y="219" scaleX="-1"/>
 
 </e:Skin>

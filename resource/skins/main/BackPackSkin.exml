@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="BackPackSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707" locked="true"/>
+	<e:Label id="title" text="背包" width="329" verticalAlign="middle" textAlign="center" horizontalCenter="0.5" y="30" textColor="0xE7C028" bold="true" fontFamily="Microsoft New Tai Lue"/>
+	<e:Image source="public_10" x="21" y="86" scale9Grid="35,33,210,200" width="592" height="571"/>
+	<e:Label text="金币" x="34" y="815" size="20" width="161"/>
+	<e:Label width="161" y="875" size="20" text="灵石" x="30"/>
+	<e:Label width="164" y="913" size="20" text="祝福" x="31"/>
+	<e:Label width="238" y="778" size="20" text="消耗金币" x="352"/>
+	<e:Label width="91" y="812" size="20" text="灵石" x="355"/>
+	<e:Label width="82" y="846" size="20" text="祝福" x="350"/>
+	<e:Image source="b4_png" x="365" y="886"/>
+	<e:Label width="161" y="847" size="20" text="威望" x="34"/>
+	<e:Image source="item_bg_0" x="273" y="802"/>
+	<e:Image source="b5_png" x="448" y="884"/>
+	<e:Image source="b6_png" x="531" y="885"/>
+	<e:Label width="52" y="911" size="20" text="强化" x="370" textAlign="center"/>
+	<e:Label y="909" text="升星" textAlign="center" width="52" size="20" x="456" textColor="0x141111"/>
+	<e:Label y="910" text="出售" textAlign="center" width="52" size="20" x="543" textColor="0x080606"/>
+	<e:Image source="public_16" x="161" y="706"/>
+	<e:Image source="public_18" x="350" y="707"/>
+
+</e:Skin>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="EmbattleSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707" locked="true"/>
+	<e:Label id="title" text="布阵" width="329" verticalAlign="middle" textAlign="center" horizontalCenter="0.5" y="30" textColor="0xE7C028" bold="true" fontFamily="Microsoft New Tai Lue"/>
+	<e:Image source="Sona_Square_0_png" y="96" scaleY="0.5" x="38" scaleX="0.5"/>
+	<e:Image source="Sona_Square_0_png" y="175" scaleY="0.5" x="40" scaleX="0.5"/>
+	<e:Image source="Sona_Square_0_png" y="246" scaleY="0.5" scaleX="0.5" x="40"/>
+	<e:Image source="Sona_Square_0_png" y="320" scaleY="0.5" x="42" scaleX="0.5"/>
+	<e:Image source="Sona_Square_0_png" y="385" scaleY="0.5" scaleX="0.5" x="41"/>
+	<e:Image source="public_9" x="129" y="126" scale9Grid="43,14,259,90" width="493" height="350"/>
+	<e:Image source="public_9" y="601" width="478" height="315" x="78" scale9Grid="43,14,259,90"/>
+	<e:Label text="阵型" x="114" y="539"/>
+
+</e:Skin>

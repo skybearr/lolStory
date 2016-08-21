@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="MapSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Rect height="960" width="640" x="0" y="0" fillColor="0x180707" locked="true"/>
+	<e:Group id="bg" height="960" width="640" x="0" y="0" locked="true"/>
+	<e:Label id="des_txt" text="地区介绍" y="183" width="552" height="173" size="16" background="true" backgroundColor="0x999999" horizontalCenter="0" textAlign="left" verticalAlign="top"/>
+	<e:Label id="event_txt" y="78" backgroundColor="0x999999" text="事件" width="552" size="20" height="94" background="true" horizontalCenter="0" verticalAlign="top" textAlign="left"/>
+	<e:Label y="30" textColor="0xE7C028" verticalAlign="middle" text="世界地图" horizontalCenter="0.5" textAlign="center" bold="true" width="329" fontFamily="Microsoft New Tai Lue" id="title" x="10"/>
+</e:Skin>

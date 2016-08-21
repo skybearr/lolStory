@@ -26,8 +26,8 @@ class FilterUtil {
     }
     
     /**文字滤镜（黄色）*/
-    public static getTxtFilter(): egret.GlowFilter[]
+    public static getTxtFilter(color:number): egret.GlowFilter[]
     {
-        return [new egret.GlowFilter(0x000000, 1, 2, 2, 10, 1, false, false)];
+        return [new egret.GlowFilter(color, 1, 2, 2, 10, 1, false, false)];
     }
 }
