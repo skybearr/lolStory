@@ -22,79 +22,83 @@
 
     <!--这个标签为通过egret提供的第三方库的方式生成的 javascript 文件。删除 modules_files 标签后，库文件加载列表将不会变化，请谨慎操作！-->
     <!--modules_files_start-->
-	<script egret="lib" src="libs/modules/egret/egret.js" src-release="libs/modules/egret/egret.min.js"></script>
-	<script egret="lib" src="libs/modules/egret/egret.web.js" src-release="libs/modules/egret/egret.web.min.js"></script>
-	<script egret="lib" src="libs/modules/eui/eui.js" src-release="libs/modules/eui/eui.min.js"></script>
-	<script egret="lib" src="libs/modules/res/res.js" src-release="libs/modules/res/res.min.js"></script>
-	<script egret="lib" src="libs/modules/tween/tween.js" src-release="libs/modules/tween/tween.min.js"></script>
-	<script egret="lib" src="libs/modules/game/game.js" src-release="libs/modules/game/game.min.js"></script>
-	<script egret="lib" src="libs/modules/game/game.web.js" src-release="libs/modules/game/game.web.min.js"></script>
+	<script egret="lib" src="libs/modules/egret/egret.js"></script>
+	<script egret="lib" src="libs/modules/egret/egret.web.js"></script>
+	<script egret="lib" src="libs/modules/eui/eui.js"></script>
+	<script egret="lib" src="libs/modules/res/res.js"></script>
+	<script egret="lib" src="libs/modules/tween/tween.js"></script>
+	<script egret="lib" src="libs/modules/game/game.js"></script>
 	<!--modules_files_end-->
 
     <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
-    <!--other_libs_files_start-->
-    <!--other_libs_files_end-->
+    
 
     <!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
     <!--game_files_start-->
-	<script egret="game" src="bin-debug/AssetAdapter.js"></script>
-	<script egret="game" src="bin-debug/core/command/HttpCommand.js"></script>
-	<script egret="game" src="bin-debug/core/command/ProxyServerCommand.js"></script>
-	<script egret="game" src="bin-debug/core/data/GlobalData.js"></script>
-	<script egret="game" src="bin-debug/core/data/StringConst.js"></script>
-	<script egret="game" src="bin-debug/core/data/UIConst.js"></script>
-	<script egret="game" src="bin-debug/core/event/MyUIEvent.js"></script>
-	<script egret="game" src="bin-debug/core/manager/DataManager.js"></script>
-	<script egret="game" src="bin-debug/core/manager/LoadManager.js"></script>
-	<script egret="game" src="bin-debug/core/manager/RoleManager.js"></script>
-	<script egret="game" src="bin-debug/core/manager/SoundManager.js"></script>
-	<script egret="game" src="bin-debug/core/manager/TweenManager.js"></script>
-	<script egret="game" src="bin-debug/core/manager/UIManager.js"></script>
-	<script egret="game" src="bin-debug/core/utils/Base64Util.js"></script>
-	<script egret="game" src="bin-debug/core/utils/FilterUtil.js"></script>
-	<script egret="game" src="bin-debug/core/utils/md5.js"></script>
-	<script egret="game" src="bin-debug/core/utils/ViewUtil.js"></script>
-	<script egret="game" src="bin-debug/core/view/avg/AVGLogic.js"></script>
-	<script egret="game" src="bin-debug/core/view/avg/AvgMainUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/component/BaseButton.js"></script>
-	<script egret="game" src="bin-debug/core/view/component/BaseFirstUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/component/BasePopUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/component/BaseProgressBar.js"></script>
-	<script egret="game" src="bin-debug/core/view/component/BaseSecondUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/component/FightHpBar.js"></script>
-	<script egret="game" src="bin-debug/core/view/component/FightHpBarItem.js"></script>
-	<script egret="game" src="bin-debug/core/view/fight/FightLogic.js"></script>
-	<script egret="game" src="bin-debug/core/view/fight/FightMainUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/fight/FightPlayerProp.js"></script>
-	<script egret="game" src="bin-debug/core/view/fight/FightPropBar.js"></script>
-	<script egret="game" src="bin-debug/core/view/loading/LoadingInGameUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/loading/LoadingUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/loading/PreLoadUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/login/LoginMain.js"></script>
-	<script egret="game" src="bin-debug/core/view/login/SelectProfession.js"></script>
-	<script egret="game" src="bin-debug/core/view/login/ServerSelectItem.js"></script>
-	<script egret="game" src="bin-debug/core/view/login/ServerSelectUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/logo/LogoAnimation.js"></script>
-	<script egret="game" src="bin-debug/core/view/main/MainButtons.js"></script>
-	<script egret="game" src="bin-debug/core/view/main/MainMapBg.js"></script>
-	<script egret="game" src="bin-debug/core/view/main/MainRoleInfoUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/main/MainUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/main/MissionBtn.js"></script>
-	<script egret="game" src="bin-debug/core/view/pop/PopWindow.js"></script>
-	<script egret="game" src="bin-debug/core/view/role/RoleUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/story/MissionItemUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/story/MissionListUI.js"></script>
-	<script egret="game" src="bin-debug/core/view/story/StoryLogic.js"></script>
-	<script egret="game" src="bin-debug/core/view/story/StoryUI.js"></script>
-	<script egret="game" src="bin-debug/core/vo/AvgDialogVO.js"></script>
-	<script egret="game" src="bin-debug/core/vo/AvgVO.js"></script>
-	<script egret="game" src="bin-debug/core/vo/FightVO.js"></script>
-	<script egret="game" src="bin-debug/core/vo/MissionListVO.js"></script>
-	<script egret="game" src="bin-debug/core/vo/MissionVO.js"></script>
-	<script egret="game" src="bin-debug/core/vo/MonsterVO.js"></script>
-	<script egret="game" src="bin-debug/core/vo/StoryChapterVO.js"></script>
-	<script egret="game" src="bin-debug/Main.js"></script>
-	<script egret="game" src="bin-debug/ThemeAdapter.js"></script>
+	<script egret="lib" src="bin-debug/core/view/component/BaseFirstUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/component/BaseSecondUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/fight/FightPlayerProp.js"></script>
+	<script egret="lib" src="bin-debug/core/command/HttpCommand.js"></script>
+	<script egret="lib" src="bin-debug/core/command/ProxyServerCommand.js"></script>
+	<script egret="lib" src="bin-debug/core/data/GlobalData.js"></script>
+	<script egret="lib" src="bin-debug/core/data/StringConst.js"></script>
+	<script egret="lib" src="bin-debug/core/data/UIConst.js"></script>
+	<script egret="lib" src="bin-debug/core/event/MyUIEvent.js"></script>
+	<script egret="lib" src="bin-debug/core/manager/DataManager.js"></script>
+	<script egret="lib" src="bin-debug/core/manager/LoadManager.js"></script>
+	<script egret="lib" src="bin-debug/core/manager/RoleManager.js"></script>
+	<script egret="lib" src="bin-debug/core/manager/SoundManager.js"></script>
+	<script egret="lib" src="bin-debug/core/manager/TweenManager.js"></script>
+	<script egret="lib" src="bin-debug/core/manager/UIManager.js"></script>
+	<script egret="lib" src="bin-debug/core/utils/Base64Util.js"></script>
+	<script egret="lib" src="bin-debug/core/utils/FilterUtil.js"></script>
+	<script egret="lib" src="bin-debug/core/utils/md5.js"></script>
+	<script egret="lib" src="bin-debug/core/utils/ViewUtil.js"></script>
+	<script egret="lib" src="bin-debug/core/view/avg/AVGLogic.js"></script>
+	<script egret="lib" src="bin-debug/core/view/avg/AvgMainUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/backpack/BackPackUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/component/BaseButton.js"></script>
+	<script egret="lib" src="bin-debug/AssetAdapter.js"></script>
+	<script egret="lib" src="bin-debug/core/view/component/BasePopUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/component/BaseProgressBar.js"></script>
+	<script egret="lib" src="bin-debug/ThemeAdapter.js"></script>
+	<script egret="lib" src="bin-debug/core/view/component/FightHpBar.js"></script>
+	<script egret="lib" src="bin-debug/core/view/component/FightHpBarItem.js"></script>
+	<script egret="lib" src="bin-debug/core/view/embattle/EmbattleUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/fight/FightLogic.js"></script>
+	<script egret="lib" src="bin-debug/core/view/fight/FightMainUI.js"></script>
+	<script egret="lib" src="bin-debug/Main.js"></script>
+	<script egret="lib" src="bin-debug/core/view/fight/FightPropBar.js"></script>
+	<script egret="lib" src="bin-debug/core/view/loading/LoadingInGameUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/loading/LoadingUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/loading/PreLoadUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/login/LoginMain.js"></script>
+	<script egret="lib" src="bin-debug/core/view/login/SelectProfession.js"></script>
+	<script egret="lib" src="bin-debug/core/view/login/ServerSelectItem.js"></script>
+	<script egret="lib" src="bin-debug/core/view/login/ServerSelectUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/logo/LogoAnimation.js"></script>
+	<script egret="lib" src="bin-debug/core/view/main/MainButtons.js"></script>
+	<script egret="lib" src="bin-debug/core/view/main/MainMapBg.js"></script>
+	<script egret="lib" src="bin-debug/core/view/main/MainRoleInfoUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/main/MainUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/main/MissionBtn.js"></script>
+	<script egret="lib" src="bin-debug/core/view/map/MapUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/mount/MountUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/pop/PopWindow.js"></script>
+	<script egret="lib" src="bin-debug/core/view/role/RoleUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/story/MissionItemUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/story/MissionListUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/story/StoryLogic.js"></script>
+	<script egret="lib" src="bin-debug/core/view/story/StoryUI.js"></script>
+	<script egret="lib" src="bin-debug/core/view/talent/TalentUI.js"></script>
+	<script egret="lib" src="bin-debug/core/vo/AvgDialogVO.js"></script>
+	<script egret="lib" src="bin-debug/core/vo/AvgVO.js"></script>
+	<script egret="lib" src="bin-debug/core/vo/FightVO.js"></script>
+	<script egret="lib" src="bin-debug/core/vo/HeroVO.js"></script>
+	<script egret="lib" src="bin-debug/core/vo/MissionListVO.js"></script>
+	<script egret="lib" src="bin-debug/core/vo/MissionVO.js"></script>
+	<script egret="lib" src="bin-debug/core/vo/MonsterVO.js"></script>
+	<script egret="lib" src="bin-debug/core/vo/StoryChapterVO.js"></script>
 	<!--game_files_end-->
 </head>
 <body>
